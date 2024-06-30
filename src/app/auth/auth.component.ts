@@ -8,42 +8,43 @@ import { Router } from '@angular/router';
   // standalone: true,
   // imports: [],
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.css'
+  styleUrl: './auth.component.css',
 })
 export class AuthComponent {
-
   // Variables
   username: string = 'admin@mail.com';
   password: string = 'Admin@123';
-  hide: boolean = true;  // This will be used to toggle the visibility
+  hide: boolean = true; // This will be used to toggle the visibility
 
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) { }
 
   // Password Visibility
   togglePasswordVisibility() {
     this.hide = !this.hide;
   }
 
-  // Login Button 
+  // Login Button
   onSubmit(form: any) {
     if (form.valid) {
       this.authService.login(this.username, this.password).subscribe(
-        response => {
+        (response) => {
           console.log('Login successful:', response);
           // Store the token and user data as needed
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('user', JSON.stringify(response.user));
+          // localStorage.setItem('token', response.token);
+          // localStorage.setItem('user', JSON.stringify(response.user));
           // Redirect to admin component
-          this.router.navigate(['/admin']);
+          this.router.navigate(['dashboard']);
         },
-        error => {
+        (error) => {
           console.error('Login failed:', error);
           // Handle login failure
-        }
+        },
       );
     } else {
       console.log('Form is invalid');
     }
   }
-
 }

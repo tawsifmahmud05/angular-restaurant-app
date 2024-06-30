@@ -1,0 +1,30 @@
+.nav-link {
+  text-decoration: none;
+  color: rgb(200, 50, 50);
+  font-weight: 700;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: rgb(200, 50, 50);
+}
+
+.btn-label {
+  position: relative;
+  left: -6px;
+  display: inline-block;
+  /* padding: 6px 12px; */
+  padding: 5px 0px;
+  border-radius: 3px 0 0 3px;
+}
+
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: rgb(200, 50, 50);
+  color: white;
+}
+
+.btn {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,49 @@
+.bg-image {
+  background-image: url("../../assets/images/dash-bg.png"); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative; /* Ensure position relative for absolute positioning of overlay */
+}
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    10,
+    10,
+    10,
+    0.1
+  ); /* Adjust opacity here (0.5 for 50% opacity) */
+}
+.content-area {
+  position: relative; /* Ensure z-index context for child elements */
+  z-index: 1; /* Ensure content area is above overlay */
+}
+
+.fixed-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  /* background-color: rgb(230, 230, 210); */
+  background-color: rgb(224, 190, 167);
+  height: 100vh;
+  z-index: 1000; /* Ensures it stays above other elements */
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 16.666667%; /* Adjust according to the sidebar width */
+  width: 83.333333%; /* Adjust according to the sidebar width */
+  z-index: 1000; /* Ensures it stays above other elements */
+  /* background-color: white; */
+}
+
+.content-scroll {
+  /* height: calc(100vh - 70px); */
+  overflow-y: auto;
+}

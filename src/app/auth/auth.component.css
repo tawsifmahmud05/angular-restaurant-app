@@ -1,19 +1,57 @@
+.bg-image {
+  background-image: url("../../assets/images/dash-bg.png"); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  position: relative; /* Ensure position relative for absolute positioning of overlay */
+}
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Adjust opacity here (0.5 for 50% opacity) */
+}
+.login-img {
+  position: relative;
+}
+
+.img-bg-shape {
+  z-index: 1;
+  height: 700px;
+  width: 700px;
+}
+
+.img-bg-rotate {
+  z-index: 2;
+  height: 400px;
+  width: 400px;
+  animation: rotate-center 10s infinite linear;
+}
+
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .login-card {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+  width: 80%;
+  background-color: rgb(230, 230, 210);
+}
+
+/* New CSS for hiding .login-img on mobile devices */
+@media (max-width: 767.98px) {
+  .side-img {
+    visibility: hidden;
+    display: none !important;
   }
-.login-card mat-form-field{
-    width: 100%;
-  }
-  
-.login-button {
-    display: flex;
-    justify-content: center;
-  }
-  
-.login-button button {
-    width: 100%;
-    border-radius: 5px;
-  }
-  
+}
