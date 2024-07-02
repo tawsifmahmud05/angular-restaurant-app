@@ -9,26 +9,32 @@ import { TablesComponent } from "./dashboard/tables/tables.component";
 import { FoodsComponent } from "./dashboard/foods/foods.component";
 import { OrderComponent } from "./dashboard/order/order.component";
 import { OrdersComponent } from "./dashboard/orders/orders.component";
+import { AddEmployeeComponent } from "./dashboard/employees/add-employee/add-employee.component";
+import { AddTableComponent } from "./dashboard/tables/add-table/add-table.component";
+import { AddFoodComponent } from "./dashboard/foods/add-food/add-food.component";
 
-const appRoutes:Routes=[
-{
-    path:'',
-    component:AuthComponent
-},
-{
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: '', redirectTo: 'admin', pathMatch: 'full' },
-      { path: 'admin', component: AdminComponent },
-      { path: 'employees', component: EmployeesComponent },
-      { path: 'tables', component: TablesComponent },
-      { path: 'foods', component: FoodsComponent },
-      { path: 'order', component: OrderComponent },
-      { path: 'orders', component: OrdersComponent },
-    ]
-},
+const appRoutes: Routes = [
+    {
+        path: '',
+        component: AuthComponent
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+        children: [
+            { path: '', redirectTo: 'admin', pathMatch: 'full' },
+            { path: 'admin', component: AdminComponent },
+            { path: 'employees', component: EmployeesComponent },
+            { path: 'tables', component: TablesComponent },
+            { path: 'foods', component: FoodsComponent },
+            { path: 'order', component: OrderComponent },
+            { path: 'orders', component: OrdersComponent },
+            { path: 'add-employee', component: AddEmployeeComponent },
+            { path: 'add-table', component: AddTableComponent },
+            { path: 'add-food', component: AddFoodComponent },
+        ]
+    },
 
 ];
 
@@ -37,6 +43,6 @@ const appRoutes:Routes=[
     exports: [RouterModule]
 })
 
-export class AppRoutingModule{
+export class AppRoutingModule {
 
 }

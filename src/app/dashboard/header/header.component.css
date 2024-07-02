@@ -12,3 +12,18 @@
   font-size: 25px;
   text-shadow: 2px 2px grey;
 }
+
+.logout-btn {
+  display: none;
+  visibility: hidden;
+}
+@media (max-width: 767px) {
+  .logout-btn {
+    display: block;
+    visibility: visible;
+    background-color: white !important;
+    color: rgb(200, 50, 50);
+    font-weight: 600;
+    margin-left: 15px;
+  }
+}

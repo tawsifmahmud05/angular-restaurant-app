@@ -32,6 +32,11 @@ import { BarChartComponent } from './chart/bar-chart/bar-chart.component';
 import { BaseChartDirective } from 'ng2-charts';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { EmployeeTableComponent } from './dashboard/employees/employee-table/employee-table.component';
+import { FoodTableComponent } from './dashboard/foods/food-table/food-table.component';
+import { TabelTableComponent } from './dashboard/tables/tabel-table/tabel-table.component';
+import { AddEmployeeComponent } from './dashboard/employees/add-employee/add-employee.component';
+import { AddTableComponent } from './dashboard/tables/add-table/add-table.component';
+import { AddFoodComponent } from './dashboard/foods/add-food/add-food.component';
 
 
 @NgModule({
@@ -48,7 +53,13 @@ import { EmployeeTableComponent } from './dashboard/employees/employee-table/emp
     OrderComponent,
     OrdersComponent,
     BarChartComponent,
-    EmployeeTableComponent
+    EmployeeTableComponent,
+    FoodTableComponent,
+    TabelTableComponent,
+
+    AddEmployeeComponent,
+    AddTableComponent,
+    AddFoodComponent
 
   ],
   imports: [

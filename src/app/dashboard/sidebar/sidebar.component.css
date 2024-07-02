@@ -1,12 +1,26 @@
+.sidebar {
+  background-color: rgb(224, 190, 167);
+  height: 100%;
+  padding: 0px 10px;
+}
 .nav-link {
   text-decoration: none;
   color: rgb(200, 50, 50);
   font-weight: 700;
 }
+.list-unstyled {
+  width: 100%;
+}
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   background-color: rgb(200, 50, 50);
+  width: 100%;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: start;
 }
 
 .btn-label {
@@ -18,13 +32,67 @@
   border-radius: 3px 0 0 3px;
 }
 
-.btn-labeled {
+.btn {
+  margin-bottom: 10px;
+}
+.logout-btn {
   padding-top: 0;
   padding-bottom: 0;
   background-color: rgb(200, 50, 50);
   color: white;
+  margin-top: auto;
+  height: 40px;
 }
 
-.btn {
-  margin-bottom: 10px;
+@media (max-width: 767px) {
+  .sidebar {
+    background-color: rgb(224, 190, 167);
+    height: 0;
+    padding: 0px 10px;
+  }
+  .userinfo {
+    visibility: hidden;
+    display: none;
+  }
+
+  .fixed-appbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(224, 190, 167);
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5px 0;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .fixed-appbar .nav ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .fixed-appbar .nav-item {
+    text-align: center;
+  }
+
+  .fixed-appbar .nav-link {
+    text-decoration: none;
+    color: rgb(200, 50, 50);
+    font-weight: 700;
+  }
+
+  .fixed-appbar .nav-link.active {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .fixed-appbar .nav-link svg {
+    margin-bottom: 5px;
+  }
+
+  .logout-btn {
+    visibility: hidden;
+  }
 }

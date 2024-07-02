@@ -1,4 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  font-family: "Poppins", sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+.content-scroll {
+  top: 0;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.add-btn {
+  border: 2px red solid;
+  background-color: white;
+}
+.add-btn:hover {
+  background-color: rgb(200, 50, 50);
+  color: white;
+}
+
+.font-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: primary;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #cc080b;
+}
