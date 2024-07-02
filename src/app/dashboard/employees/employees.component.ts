@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../shared/data-storage.service';
+import { LoaderService } from '../shared/loader.service';
+import { NotificationService } from '../shared/notification/notification.service';
 
 @Component({
   selector: 'app-employees',
@@ -8,13 +10,14 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class EmployeesComponent implements OnInit {
 
-  constructor(private dataStoragerService: DataStorageService) {
+  constructor(private dataStoragerService: DataStorageService, private loaderService: LoaderService) {
 
   }
 
   ngOnInit(): void {
-    this.dataStoragerService.getEmployees().subscribe(data => {
-      console.log(data);
+
+    this.dataStoragerService.getEmployees().pipe(this.loaderService.attachLoader()).subscribe(data => {
+
     });
   }
 }

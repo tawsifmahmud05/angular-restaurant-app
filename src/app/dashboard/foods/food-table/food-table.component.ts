@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 
 import { DataStorageService } from '../../shared/data-storage.service';
 import { Food } from '../food.model';
+import { LoaderService } from '../../shared/loader.service';
 
 @Component({
   selector: 'app-food-table',
@@ -17,18 +18,24 @@ export class FoodTableComponent implements OnInit, AfterViewInit {
   // displayedColumns: string[] = ['image', 'name', 'price', 'discountType', 'discount', 'discountPrice', 'action'];
   displayedColumns: string[] = ['image', 'name', 'price', 'discountType', 'discount', 'discountPrice', 'action'];
   dataSource = new MatTableDataSource<Food>([]);
+  pageData: any;
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(private dataStorageService: DataStorageService, private loaderService: LoaderService) { }
 
   ngOnInit() {
-    this.dataStorageService.getFoods().subscribe(data => {
-
+    this.dataStorageService.getFoods().pipe(this.loaderService.attachLoader()).subscribe(data => {
+      this.pageData = data
       this.dataSource = data.data;
-      console.log(this.dataSource);
+      console.log(this.pageData);
     });
+    // this.totalItems = this.dataSource.length;
+    // console.log(this.totalItems);
+
+
 
   }
   ngAfterViewInit() {
@@ -44,5 +51,6 @@ export class FoodTableComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
 
 }

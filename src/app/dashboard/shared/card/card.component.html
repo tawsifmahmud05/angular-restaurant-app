@@ -1,0 +1,28 @@
+<!-- card.component.html -->
+<mat-card class="example-card">
+  <mat-card-header>
+    <div class="me-auto p-2">
+      <h3>Date</h3>
+      <p>Date</p>
+    </div>
+    <div class="p-2">
+      <button>1234</button>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let food of foods" class="food-item d-flex">
+      <img [src]="food.image" alt="{{ food.name }}" class="food-image" />
+      <div class="food-details d-flex">
+        <div class="d-flex flex-column">
+          <p>{{ food.name }}</p>
+          <p>{{ food.price }}৳</p>
+        </div>
+        <p class="justify-self-end">Qty: {{ food.quantity }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Button 1</button>
+    <button mat-button>Button 2</button>
+  </mat-card-actions>
+</mat-card>

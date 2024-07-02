@@ -27,13 +27,13 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  overflow-y: auto;
   height: 100vh;
   z-index: 30;
   --bs-gutter-x: 0;
 }
 .header-solid {
   z-index: 30;
+  margin: 10px;
 }
 
 .fixed-header {
@@ -58,8 +58,6 @@
   }
   .fixed-sidebar {
     position: relative;
-
-    overflow-y: auto;
     height: 0;
     z-index: 30;
     --bs-gutter-x: 0;

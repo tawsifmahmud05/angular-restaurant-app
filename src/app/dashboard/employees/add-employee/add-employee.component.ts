@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataStorageService } from '../../shared/data-storage.service';
 import { Router } from '@angular/router';
+import { LoaderService } from '../../shared/loader.service';
+import { NotificationService } from '../../shared/notification/notification.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -12,21 +14,6 @@ export class AddEmployeeComponent implements OnInit {
 
 
   employee = {
-    // firstName: '',
-    // middleName: '',
-    // lastName: '',
-    // image: '1235689',
-    // spouseName: '',
-    // fatherName: '',
-    // motherName: '',
-    // designation: '',
-    // email: '',
-    // phoneNumber: '',
-    // genderId: 0,
-    // dob: '',
-    // joinDate: '',
-    // nid: '',
-    // base64: "aGVsbG8gd29ybGQ="
     designation: "Junior",
     joinDate: "2024-07-01T12:05:24.948Z",
     email: "john.de@example.com",
@@ -62,7 +49,9 @@ export class AddEmployeeComponent implements OnInit {
     base64: "base64encodedstring"
   };
 
-  constructor(private dataStorageService: DataStorageService, private router: Router,) {
+  constructor(private dataStorageService: DataStorageService,
+    private router: Router, private loaderService: LoaderService,
+    private notificationService: NotificationService) {
 
   }
   ngOnInit(): void {
@@ -73,13 +62,18 @@ export class AddEmployeeComponent implements OnInit {
     console.log(this.employee);
 
     if (form.valid) {
-      this.dataStorageService.addEmployee(this.employee).subscribe(
+      this.dataStorageService.addEmployee(this.employee).pipe(this.loaderService.attachLoader()).subscribe(
         response => {
           console.log('Employee added successfully', response);
+          this.notificationService.showSuccess("Employee Added successfully")
+
           this.router.navigate(['dashboard/employees']);
         },
         error => {
+          this.loaderService.hideLoader();
           console.error('Error adding employee', error);
+          this.notificationService.showError("Please try again!")
+
         }
       );
     }

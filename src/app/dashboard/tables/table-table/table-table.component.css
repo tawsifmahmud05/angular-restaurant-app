@@ -21,3 +21,8 @@ th {
   color: rgb(200, 50, 50);
   font-weight: 700;
 }
+
+.employee-btn {
+  background-color: rgba(175, 175, 175, 0.3);
+  border-radius: 50px;
+}

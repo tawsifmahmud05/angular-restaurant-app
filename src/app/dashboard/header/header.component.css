@@ -1,7 +1,7 @@
 .navbar {
   background-color: rgb(200, 50, 50);
   color: white !important;
-  /* border-radius: 0px 0px 10px 10px; */
+  border-radius: 10px;
 }
 .navbar a {
   text-decoration: none;

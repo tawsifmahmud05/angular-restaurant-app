@@ -1,1 +1,140 @@
-<p>add-food works!</p>
+<div class="container-fluid p-5 table">
+  <div class="mb-5">
+    <h2 class="font-heading">Add Food</h2>
+  </div>
+  <div class="form p-3">
+    <form #foodForm="ngForm" (ngSubmit)="onSubmit(foodForm)">
+      <div class="row">
+        <div class="col-md-8">
+          <div>
+            <label for="name" class="form-label">Food Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              [(ngModel)]="food.name"
+              required
+              #nameInput="ngModel"
+            />
+            <div
+              *ngIf="nameInput.hasError('required') && nameInput.touched"
+              class="text-danger"
+            >
+              Name is required.
+            </div>
+          </div>
+          <div>
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              type="text"
+              id="description"
+              name="description"
+              class="form-control"
+              [(ngModel)]="food.description"
+              required
+              #desciptionInput="ngModel"
+            ></textarea>
+            <div
+              *ngIf="
+                desciptionInput.hasError('required') && desciptionInput.touched
+              "
+              class="text-danger"
+            >
+              Description is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex h-100">
+            <input
+              type="file"
+              id="image"
+              name="image"
+              class="form-control-file"
+              [(ngModel)]="food.image"
+            />
+            <label for="image" class="custom-file-label">Add Food Image</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div>
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="text"
+              id="price"
+              name="price"
+              class="form-control"
+              [(ngModel)]="food.price"
+              required
+              #priceInput="ngModel"
+            />
+            <div
+              *ngIf="priceInput.hasError('required') && priceInput.touched"
+              class="text-danger"
+            >
+              Description is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <label for="gender" class="form-label">Select Discount Type</label>
+            <select
+              id="gender"
+              name="gender"
+              class="form-select"
+              [(ngModel)]="food.discountType"
+              required
+            >
+              <!-- <option value="" disabled selected>Select gender</option> -->
+              <option value="1" selected>None</option>
+              <option value="2">Flat</option>
+              <option value="3">Percentage</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <label for="discount" class="form-label">Discount in (%)</label>
+            <input
+              type="text"
+              id="discount"
+              name="discount"
+              class="form-control"
+              [(ngModel)]="food.discount"
+              required
+              #discountInput="ngModel"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <label for="discountPrice" class="form-label"
+              >Discounted Price</label
+            >
+            <input
+              type="text"
+              id="discountPrice"
+              name="discountPrice"
+              class="form-control"
+              [(ngModel)]="food.discountPrice"
+              required
+              #discountPriceInput="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn mt-5 d-flex w-100 justify-content-center"
+        [disabled]="!foodForm.form.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

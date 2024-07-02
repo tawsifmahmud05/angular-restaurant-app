@@ -14,6 +14,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Employee } from '../employee.model';
 import { DataStorageService } from '../../shared/data-storage.service';
+import { LoaderService } from '../../shared/loader.service';
+import { NotificationService } from '../../shared/notification/notification.service';
 
 
 @Component({
@@ -22,20 +24,21 @@ import { DataStorageService } from '../../shared/data-storage.service';
   styleUrls: ['./employee-table.component.css']
 })
 export class EmployeeTableComponent implements OnInit, AfterViewInit {
-  // displayedColumns: string[] = ['id', 'image', 'designation', 'joinDate', 'amountSold', 'userName'];
   displayedColumns: string[] = ['image', 'name', 'email', 'designation', 'joinDate', 'phone', 'action'];
+  // displayedColumns: string[] = ['image', 'name',];
   dataSource = new MatTableDataSource<Employee>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(private dataStorageService: DataStorageService,
+    private loaderService: LoaderService,
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
     this.dataStorageService.getEmployees().subscribe(data => {
 
       this.dataSource = data.data;
-      console.log(this.dataSource);
     });
 
   }
@@ -51,6 +54,22 @@ export class EmployeeTableComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  onDelete(id: string) {
+    this.dataStorageService.deleteEmployee(id).pipe(this.loaderService.attachLoader()).subscribe(
+      response => {
+        this.notificationService.showSuccess("Employee deleted successfully");
+        this.dataStorageService.getEmployees().subscribe(data => {
+
+          this.dataSource = data.data;
+        });
+      },
+      error => {
+        this.notificationService.showError("Try again");
+      }
+    );
+
   }
 
 

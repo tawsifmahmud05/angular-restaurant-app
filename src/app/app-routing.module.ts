@@ -7,7 +7,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EmployeesComponent } from "./dashboard/employees/employees.component";
 import { TablesComponent } from "./dashboard/tables/tables.component";
 import { FoodsComponent } from "./dashboard/foods/foods.component";
-import { OrderComponent } from "./dashboard/order/order.component";
+import { NewOrderComponent } from "./dashboard/new-order/new-order.component";
 import { OrdersComponent } from "./dashboard/orders/orders.component";
 import { AddEmployeeComponent } from "./dashboard/employees/add-employee/add-employee.component";
 import { AddTableComponent } from "./dashboard/tables/add-table/add-table.component";
@@ -28,7 +28,7 @@ const appRoutes: Routes = [
             { path: 'employees', component: EmployeesComponent },
             { path: 'tables', component: TablesComponent },
             { path: 'foods', component: FoodsComponent },
-            { path: 'order', component: OrderComponent },
+            { path: 'new-order', component: NewOrderComponent },
             { path: 'orders', component: OrdersComponent },
             { path: 'add-employee', component: AddEmployeeComponent },
             { path: 'add-table', component: AddTableComponent },

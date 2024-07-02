@@ -25,7 +25,7 @@ import { AdminComponent } from './dashboard/admin/admin.component';
 import { EmployeesComponent } from './dashboard/employees/employees.component';
 import { TablesComponent } from './dashboard/tables/tables.component';
 import { FoodsComponent } from './dashboard/foods/foods.component';
-import { OrderComponent } from './dashboard/order/order.component';
+import { NewOrderComponent } from './dashboard/new-order/new-order.component';
 import { OrdersComponent } from './dashboard/orders/orders.component';
 import { BarChartComponent } from './chart/bar-chart/bar-chart.component';
 
@@ -33,10 +33,18 @@ import { BaseChartDirective } from 'ng2-charts';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { EmployeeTableComponent } from './dashboard/employees/employee-table/employee-table.component';
 import { FoodTableComponent } from './dashboard/foods/food-table/food-table.component';
-import { TabelTableComponent } from './dashboard/tables/tabel-table/tabel-table.component';
+import { TableTableComponent } from './dashboard/tables/table-table/table-table.component';
 import { AddEmployeeComponent } from './dashboard/employees/add-employee/add-employee.component';
 import { AddTableComponent } from './dashboard/tables/add-table/add-table.component';
 import { AddFoodComponent } from './dashboard/foods/add-food/add-food.component';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
+import { NotificationComponent } from './dashboard/shared/notification/notification.component';
+import { MatDialogActions, MatDialogClose, MatDialogModule } from '@angular/material/dialog';
+import { ConfirmationModalComponent } from './dashboard/shared/confirmation-modal/confirmation-modal.component';
+import { CardComponent } from './dashboard/shared/card/card.component';
 
 
 @NgModule({
@@ -50,35 +58,44 @@ import { AddFoodComponent } from './dashboard/foods/add-food/add-food.component'
     EmployeesComponent,
     TablesComponent,
     FoodsComponent,
-    OrderComponent,
+    NewOrderComponent,
     OrdersComponent,
     BarChartComponent,
     EmployeeTableComponent,
     FoodTableComponent,
-    TabelTableComponent,
-
+    TableTableComponent,
+    NotificationComponent,
+    ConfirmationModalComponent,
+    CardComponent,
     AddEmployeeComponent,
     AddTableComponent,
     AddFoodComponent
-
   ],
+  providers: [provideCharts(withDefaultRegisterables())],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
     BaseChartDirective,
-
     BrowserAnimationsModule,
-
     CommonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
+    CdkTableModule,
     MatButtonModule,
-    MatIconModule
-  ],
-  providers: [provideCharts(withDefaultRegisterables())],
-  bootstrap: [AppComponent]
+    MatCardModule,
+    MatIconModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSortModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatDialogActions,
+    MatDialogClose,
+  ]
 })
 export class AppModule { }

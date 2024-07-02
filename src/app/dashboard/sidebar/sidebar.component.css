@@ -1,7 +1,15 @@
 .sidebar {
-  background-color: rgb(224, 190, 167);
   height: 100%;
+  padding: 10px;
+}
+
+.space {
   padding: 0px 10px;
+  background-color: rgb(224, 190, 167);
+
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .nav-link {
   text-decoration: none;
@@ -49,6 +57,7 @@
     background-color: rgb(224, 190, 167);
     height: 0;
     padding: 0px 10px;
+    width: 100%;
   }
   .userinfo {
     visibility: hidden;
@@ -59,7 +68,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
+    /* width: 100%; */
     background-color: rgb(224, 190, 167);
     z-index: 1000;
     display: flex;
