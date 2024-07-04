@@ -30,10 +30,11 @@
   height: 100vh;
   z-index: 30;
   --bs-gutter-x: 0;
+  padding: 0;
 }
-.header-solid {
-  z-index: 30;
-  margin: 10px;
+
+.father-content {
+  width: 100%;
 }
 
 .fixed-header {
@@ -43,12 +44,29 @@
   width: 83.333333%; /* Adjust according to the sidebar width */
   z-index: 20; /* Ensures it stays above other elements */
   /* background-color: white; */
+  margin-top: 10px;
+}
+
+.content {
+  position: relative;
+  margin-top: 10rem;
+  left: 16.666667%; /* Adjust according to the sidebar width */
+  width: 83.333333%;
 }
 
 @media (max-width: 767px) {
   .fixed-header {
     width: 100%;
     left: 0;
+    right: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .content {
+    width: 100%;
+    margin-top: 5rem;
+    top: 5%;
+    left: 0%;
   }
   .sidebar {
     bottom: 0;

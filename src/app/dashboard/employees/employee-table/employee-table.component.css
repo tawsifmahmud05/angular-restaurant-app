@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
 }
-
+.demo-table {
+  width: 100%;
+}
 table {
   width: 100%;
 }
@@ -29,6 +31,11 @@ th {
 
 .mobile-label {
   display: none;
+}
+
+mat-column-action {
+  width: 32px;
+  text-align: center;
 }
 
 @media (max-width: 767px) {

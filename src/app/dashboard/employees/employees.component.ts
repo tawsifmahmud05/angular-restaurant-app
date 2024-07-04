@@ -16,8 +16,6 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.dataStoragerService.getEmployees().pipe(this.loaderService.attachLoader()).subscribe(data => {
 
-    });
   }
 }

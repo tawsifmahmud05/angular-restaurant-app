@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class AddFoodComponent {
 
+  imageSelected: boolean = false;
+
   food = {
     name: "Pudding",
     description: "lorem Ipsum",
@@ -19,7 +21,7 @@ export class AddFoodComponent {
     discountType: 0,
     discount: 0,
     discountPrice: 300,
-    image: "path/to/image.jpg",
+    image: "",
     base64: "aGVsbG8gd29ybGQ="
   };
 
@@ -30,6 +32,20 @@ export class AddFoodComponent {
   }
   ngOnInit(): void {
 
+  }
+
+  toggleSelect(): void {
+    this.imageSelected = !this.imageSelected;
+  }
+
+  discountedPrice() {
+    if (this.food.discountType == 1) {
+      this.food.discountPrice = this.food.price - this.food.discount;
+    } else if (this.food.discountType == 2) {
+      this.food.discountPrice = this.food.price - (this.food.price * this.food.discount / 100);
+    } else {
+      this.food.discountPrice = this.food.price;
+    }
   }
 
   onSubmit(form: NgForm) {
@@ -50,6 +66,21 @@ export class AddFoodComponent {
 
         }
       );
+    }
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.food.base64 = e.target?.result as string;
+      };
+
+      reader.readAsDataURL(file);
     }
   }
 }

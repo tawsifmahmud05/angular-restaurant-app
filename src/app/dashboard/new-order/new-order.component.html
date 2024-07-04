@@ -1,1 +1,45 @@
-<p>order works!</p>
+<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col-md-6 d-flex">
+      <h2 class="font-heading">New Order</h2>
+    </div>
+    <div class="col-md-6 d-flex">
+      <!-- <button
+        class="btn add-btn"
+        type="button"
+        routerLink="/dashboard/new-order"
+        routerLinkActive="active"
+      >
+        New Order
+      </button> -->
+    </div>
+    <div class="row">
+      <div
+        class="col-md-3"
+        style="background-color: white; border-radius: 10px; height: 100%"
+      >
+        <div class="d-flex justify-content-center">
+          <div class="text-center">
+            <div>SELECT A TABLE ({{ tableData.length }})</div>
+            <div class="scrollable-container">
+              <div class="card" *ngFor="let table of tableData">
+                <img
+                  [src]="
+                    'https://restaurantapi.bssoln.com/images/table/' +
+                    table.image
+                  "
+                  class="circular-image"
+                  alt="Food Image"
+                />
+                <div class="details">
+                  <h3>{{ table.tableNumber }}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" style="background-color: white">1234</div>
+    </div>
+  </div>
+</div>

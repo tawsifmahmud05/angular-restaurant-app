@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { LoaderService } from '../dashboard/shared/loader.service';
 
 @Component({
   selector: 'app-auth',
@@ -19,6 +20,7 @@ export class AuthComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private loaderService: LoaderService
   ) { }
 
   // Password Visibility
@@ -29,7 +31,7 @@ export class AuthComponent {
   // Login Button
   onSubmit(form: any) {
     if (form.valid) {
-      this.authService.login(this.username, this.password).subscribe(
+      this.authService.login(this.username, this.password).pipe(this.loaderService.attachLoader()).subscribe(
         (response) => {
           console.log('Login successful:', response);
           // Store the token and user data as needed

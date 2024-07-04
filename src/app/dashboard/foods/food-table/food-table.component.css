@@ -1,4 +1,9 @@
 /* Example styles for the table */
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
 table {
   width: 100%;
 }
@@ -11,8 +16,8 @@ table {
 }
 
 .circular-image {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -20,4 +25,40 @@ table {
 th {
   color: rgb(200, 50, 50);
   font-weight: 700;
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mat-elevation-z8 {
+    z-index: -1;
+    box-shadow: none;
+  }
+
+  .mat-mdc-table {
+    background-color: transparent;
+  }
+  .mobile-label {
+    width: 100px;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: white;
+  }
+  .mat-mdc-cell {
+    border: 0px solid white;
+  }
 }

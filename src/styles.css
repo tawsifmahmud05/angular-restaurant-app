@@ -6,7 +6,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(200, 50, 50);
+  background: rgb(255, 255, 255);
 }
 
 /* Handle */
@@ -28,12 +28,15 @@ body {
 }
 
 .add-btn {
-  border: 2px red solid;
-  background-color: white;
+  background-color: rgb(200, 50, 50);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: white;
+  font-weight: 600;
+  margin-left: auto;
 }
 .add-btn:hover {
-  background-color: rgb(200, 50, 50);
-  color: white;
+  background-color: white;
+  color: rgb(200, 50, 50);
 }
 
 .font-heading {
@@ -44,7 +47,15 @@ body {
   border-bottom: 3px solid #cc080b;
 }
 
-/* .scroll {
-  height: 100vh;
-  overflow-y: auto;
-} */
+.delete-btn {
+  fill: rgba(200, 50, 50, 0.9);
+}
+.delete-btn:hover {
+  fill: red;
+}
+
+@media (max-width: 767px) {
+  .add-btn {
+    margin-left: 0;
+  }
+}

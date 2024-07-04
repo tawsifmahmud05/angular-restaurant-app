@@ -1,11 +1,11 @@
-<div class="container-fluid p-5">
+<div class="container-fluid">
   <div class="row mb-3">
     <div class="col-md-6 d-flex">
       <h2 class="font-heading">Orders</h2>
     </div>
     <div class="col-md-6 d-flex">
       <button
-        class="btn add-btn ms-auto"
+        class="btn add-btn"
         type="button"
         routerLink="/dashboard/new-order"
         routerLinkActive="active"
@@ -14,32 +14,12 @@
       </button>
     </div>
   </div>
-  <div class="row">
-    <app-card
-      title="Example Card"
-      subtitle="Subtitle"
-      content="This is a sample card component created using Angular Material."
-      imageUrl="https://example.com/image.jpg"
-      [foods]="[
-        {
-          image: 'https://example.com/steak.jpg',
-          name: 'Steak',
-          price: 2000,
-          quantity: 1,
-        },
-        {
-          image: 'https://example.com/haleem.jpg',
-          name: 'Haleem',
-          price: 1400,
-          quantity: 1,
-        },
-        {
-          image: 'https://example.com/biryani.jpg',
-          name: 'Biryani',
-          price: 1000,
-          quantity: 1,
-        },
-      ]"
-    ></app-card>
+  <div class="order-list-container">
+    <div class="row" *ngFor="let orderChunk of chunkedOrders">
+      <!-- <app-card *ngFor="let order of orderChunk" [order]="order"></app-card> -->
+      <div class="col-md-4" *ngFor="let order of orderChunk">
+        <app-card [order]="order"></app-card>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 import { DataStorageService } from '../../shared/data-storage.service';
 import { Food } from '../food.model';
 import { LoaderService } from '../../shared/loader.service';
+import { NotificationService } from '../../shared/notification/notification.service';
 
 @Component({
   selector: 'app-food-table',
@@ -18,24 +19,18 @@ export class FoodTableComponent implements OnInit, AfterViewInit {
   // displayedColumns: string[] = ['image', 'name', 'price', 'discountType', 'discount', 'discountPrice', 'action'];
   displayedColumns: string[] = ['image', 'name', 'price', 'discountType', 'discount', 'discountPrice', 'action'];
   dataSource = new MatTableDataSource<Food>([]);
-  pageData: any;
+  totalRecords: number = 0;
+  pageSize: number = 10;
+  currentPage: number = 1;
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dataStorageService: DataStorageService, private loaderService: LoaderService) { }
+  constructor(private dataStorageService: DataStorageService, private loaderService: LoaderService, private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.dataStorageService.getFoods().pipe(this.loaderService.attachLoader()).subscribe(data => {
-      this.pageData = data
-      this.dataSource = data.data;
-      console.log(this.pageData);
-    });
-    // this.totalItems = this.dataSource.length;
-    // console.log(this.totalItems);
-
-
+    this.loadFoods(this.currentPage, this.pageSize);
 
   }
   ngAfterViewInit() {
@@ -43,14 +38,33 @@ export class FoodTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  loadFoods(page: number, perPage: number): void {
+    this.dataStorageService.getFoods(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(response => {
+      this.dataSource = response.data;
+      this.totalRecords = response.totalRecords;
+    });
   }
+
+  onDeleteFood(id: any) {
+    this.dataStorageService.deleteFood(id).pipe(this.loaderService.attachLoader()).subscribe(
+      response => {
+        this.notificationService.showSuccess("Food deleted successfully");
+        this.loadFoods(this.currentPage, this.pageSize);
+      },
+      error => {
+        this.notificationService.showError("Try again");
+      }
+    );
+
+  }
+  onPageChange(event: PageEvent): void {
+    this.currentPage = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.loadFoods(this.currentPage, this.pageSize);
+  }
+
+
+
 
 
 }

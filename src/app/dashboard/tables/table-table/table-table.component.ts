@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Table } from '../table.model';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DataStorageService } from '../../shared/data-storage.service';
 import { LoaderService } from '../../shared/loader.service';
@@ -19,9 +19,12 @@ export class TableTableComponent {
   // displayedColumns: string[] = ['image', 'name', 'price', 'discountType', 'discount', 'discountPrice', 'action'];
   displayedColumns: string[] = ['tableNumber', 'numberOfSeats', 'isOccupied', 'employees', 'action'];
   dataSource = new MatTableDataSource<Table>([]);
+  totalRecords: number = 0;
+  pageSize: number = 10;
+  currentPage: number = 1;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  // @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private dataStorageService: DataStorageService,
     private loaderService: LoaderService,
@@ -29,25 +32,28 @@ export class TableTableComponent {
     private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.dataStorageService.getTables().pipe(this.loaderService.attachLoader()).subscribe(data => {
+    this.loadTables(this.currentPage, this.pageSize);
 
-      this.dataSource = data.data;
-      console.log(this.dataSource);
+  }
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
+
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  //   if (this.dataSource.paginator) {
+  //     this.dataSource.paginator.firstPage();
+  //   }
+  // }
+
+  loadTables(page: number, perPage: number): void {
+    this.dataStorageService.getTables(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(response => {
+      this.dataSource = response.data;
+      this.totalRecords = response.totalRecords;
     });
-
-  }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 
   openConfirmationDialog(id: any): void {
@@ -55,8 +61,7 @@ export class TableTableComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // User clicked Proceed
-        console.log('Proceed');
+        this.onDeleteEmployeeTable(id)
       } else {
         // User clicked Cancel or clicked outside the dialog
         console.log('Cancelled');
@@ -64,16 +69,24 @@ export class TableTableComponent {
     });
   }
 
+  onDeleteEmployeeTable(id: any) {
+    this.dataStorageService.deleteEmployeeTable(id).pipe(this.loaderService.attachLoader()).subscribe(
+      response => {
+        this.notificationService.showSuccess("Employee Removed successfully");
+        this.loadTables(this.currentPage, this.pageSize);
+      },
+      error => {
+        this.notificationService.showError("Try again");
+        console.error('Error Removing Employee', error);
+      }
+    );
+  }
   onDeleteTable(id: string) {
     this.dataStorageService.deleteTable(id).pipe(this.loaderService.attachLoader()).subscribe(
       response => {
         console.log('Table deleted', response);
         this.notificationService.showSuccess("Table deleted successfully");
-        this.dataStorageService.getTables().subscribe(data => {
-
-          this.dataSource = data.data;
-          console.log(this.dataSource);
-        });
+        this.loadTables(this.currentPage, this.pageSize);
       },
       error => {
         this.notificationService.showError("Try again");
@@ -81,5 +94,10 @@ export class TableTableComponent {
       }
     );
 
+  }
+  onPageChange(event: PageEvent): void {
+    this.currentPage = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.loadTables(this.currentPage, this.pageSize);
   }
 }
