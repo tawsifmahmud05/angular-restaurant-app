@@ -2,12 +2,13 @@ import { HttpClient, HttpContext, HttpHeaders, HttpParams } from "@angular/commo
 import { Injectable } from "@angular/core";
 import { map, tap } from "rxjs/operators";
 import { AuthService } from "../../auth/auth.service";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 
 
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
+
 
     isLoading = false;
 
@@ -90,6 +91,10 @@ export class DataStorageService {
         return this.post(`${this.endpoints.food}/create`, foodData);
     }
 
+    addOrder(orderData: any): Observable<any> {
+        return this.post(`${this.endpoints.order}/create`, orderData);
+    }
+
     deleteEmployee(employeeId: string): Observable<any> {
         return this.delete(`${this.endpoints.employee}/delete/${employeeId}`);
     }
@@ -106,7 +111,15 @@ export class DataStorageService {
         return this.delete(`${this.endpoints.food}/delete/${foodId}`);
     }
 
+    deleteOrder(orderId: string): Observable<any> {
+        return this.delete(`${this.endpoints.order}/delete/${orderId}`);
+    }
+
     getNonAssignedEmployee(tableId: string): Observable<any> {
         return this.get(`${this.endpoints.employee}/non-assigned-employees/${tableId}`);
+    }
+
+    createRange(employeeTable: any): Observable<any> {
+        return this.post(`${this.endpoints.employeeTable}/create-range`, employeeTable);
     }
 }

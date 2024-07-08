@@ -4,6 +4,10 @@ import { LoaderService } from '../shared/loader.service';
 import { NotificationService } from '../shared/notification/notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Table } from '../tables/table.model';
+import { Food } from '../foods/food.model';
+import { Order, OrderItem } from './order.model';
+import { OrderService } from './order.services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-new-order',
@@ -13,15 +17,42 @@ import { Table } from '../tables/table.model';
 export class NewOrderComponent implements OnInit {
 
   tableData: Table[] = [];
+  foodData: Food[] = [];
+
+  isTableSelected: boolean = false;
+
+  selectedTableId: number | null = null;
+
+  disabledButtons: { [key: number]: boolean } = {};
+
+  order: Order;
+  private orderSubscription: Subscription;
 
   constructor(private dataStorageService: DataStorageService,
     private loaderService: LoaderService,
     private notificationService: NotificationService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog, private orderService: OrderService) {
+
+
+    this.order = {
+      tableId: 0,
+      orderNumber: "",
+      amount: 0,
+      phoneNumber: "",
+      items: []
+    };
+    // Subscribe to order changes
+    this.orderSubscription = this.orderService.getOrder().subscribe(order => {
+      this.order = order;
+      this.updateDisabledButtons();
+
+    });
+  }
 
 
   ngOnInit(): void {
     this.loadTables(0, 10);
+    this.loadFoods(0, 20);
   }
 
 
@@ -30,6 +61,51 @@ export class NewOrderComponent implements OnInit {
   loadTables(page: number, perPage: number): void {
     this.dataStorageService.getTables(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(response => {
       this.tableData = response.data;
+      console.log(this.tableData);
+    });
+  }
+
+  loadFoods(page: number, perPage: number): void {
+    this.dataStorageService.getFoods(page, perPage).subscribe(response => {
+      this.foodData = response.data;
+      console.log(this.foodData);
+
+    });
+  }
+
+  selectTable(tableId: number): void {
+    this.selectedTableId = tableId;
+    if (!this.isTableSelected) {
+      this.isTableSelected = !this.isTableSelected;
+    }
+    this.order.tableId = tableId;
+    // console.log(tableId);
+    this.orderService.setTableId(tableId)
+
+  }
+
+  addItem(selectedFood: any): void {
+    const newItem: OrderItem = {
+      foodId: selectedFood.id,
+      foodPackageId: null,
+      quantity: 1,
+      unitPrice: selectedFood.discountType == "None" ? selectedFood.price : selectedFood.discountPrice,
+      totalPrice: selectedFood.discountType == "None" ? selectedFood.price : selectedFood.discountPrice,
+    };
+    this.orderService.addItemToOrder(newItem, selectedFood);
+    this.disabledButtons[selectedFood.id] = true;
+
+  }
+
+  private updateDisabledButtons(): void {
+    // Enable all buttons initially
+    Object.keys(this.disabledButtons).forEach(key => {
+      this.disabledButtons[+key] = false;
+    });
+
+    // Disable buttons for items that are in the order
+    this.order.items.forEach(item => {
+      this.disabledButtons[item.foodId] = true;
     });
   }
 

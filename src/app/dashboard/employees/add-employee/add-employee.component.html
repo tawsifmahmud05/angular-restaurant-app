@@ -69,16 +69,34 @@
         </div>
         <div class="col-md-4">
           <div class="d-flex h-100">
-            <input
-              type="file"
-              id="image"
-              name="image"
-              class="form-control-file"
-              [(ngModel)]="employee.image"
-            />
-            <label for="image" class="custom-file-label"
-              >Add Profile Image</label
-            >
+            <div *ngIf="!imageSelected" style="width: 100%">
+              <input
+                type="file"
+                id="image"
+                name="image"
+                class="form-control-file"
+                [(ngModel)]="employee.image"
+                (change)="onFileSelected($event)"
+              />
+              <label for="image" class="custom-file-label"
+                >Add Employee Image</label
+              >
+            </div>
+            <div *ngIf="imageSelected" style="width: 100%">
+              <button
+                type="button"
+                class="close"
+                class="cross-button"
+                (click)="toggleSelect()"
+              >
+                <span>&times;</span>
+              </button>
+              <img
+                class="food-image"
+                [src]="employee.base64"
+                alt="{{ employee.firstName }}"
+              />
+            </div>
           </div>
         </div>
       </div>

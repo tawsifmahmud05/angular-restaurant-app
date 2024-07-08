@@ -13,6 +13,8 @@ import { ConfirmationModalComponent } from '../../shared/confirmation-modal/conf
 })
 export class AddTableComponent {
 
+  imageSelected: boolean = false;
+
 
   table = {
     tableNumber: "TB002",
@@ -29,6 +31,31 @@ export class AddTableComponent {
   }
   ngOnInit(): void {
 
+  }
+
+  toggleSelect(): void {
+    this.imageSelected = !this.imageSelected;
+
+    if (this.imageSelected == false) {
+      this.table.image = "";
+      this.table.base64 = "";
+    }
+  }
+
+  onFileSelected(event: Event): void {
+    this.toggleSelect();
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.table.base64 = e.target?.result as string;
+      };
+
+      reader.readAsDataURL(file);
+    }
   }
 
 
@@ -53,4 +80,6 @@ export class AddTableComponent {
       );
     }
   }
+
+
 }

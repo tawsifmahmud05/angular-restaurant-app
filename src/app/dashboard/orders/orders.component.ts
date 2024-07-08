@@ -19,7 +19,7 @@ export class OrdersComponent implements OnInit {
     private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.dataStorageService.getOrders().subscribe(data => {
+    this.dataStorageService.getOrders().pipe(this.loaderService.attachLoader()).subscribe(data => {
 
       this.orders = data.data;
       this.chunkOrders();
@@ -34,4 +34,16 @@ export class OrdersComponent implements OnInit {
       this.chunkedOrders.push(this.orders.slice(i, i + 3));
     }
   }
+
+  onDeleteReload(isdeleted: boolean) {
+    this.dataStorageService.getOrders().pipe(this.loaderService.attachLoader()).subscribe(data => {
+
+      this.orders = data.data;
+      this.chunkOrders();
+      console.log(this.chunkedOrders);
+
+    });
+  }
+
+
 }

@@ -5,9 +5,12 @@
       <div class="col-md-2 fixed-sidebar">
         <app-sidebar></app-sidebar>
       </div>
-      <div class="col-md-10 g-0 father-content">
+      <div class="col-md-10 g-0 father-content" style="z-index: 10">
+        <div style="z-index: 20000">
+          <app-cart [hideCart]="isCartHidden"></app-cart>
+        </div>
         <div class="row fixed-header">
-          <app-header></app-header>
+          <app-header (toggleSidebar)="toggleSidebar()"></app-header>
         </div>
         <div class="row content">
           <router-outlet></router-outlet>

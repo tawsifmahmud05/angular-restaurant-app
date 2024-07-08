@@ -2,11 +2,12 @@
   background-image: url("../../assets/images/dash-bg.png"); /* Replace with your image path */
   background-size: cover;
   background-position: center;
+
   height: 100vh;
   position: relative; /* Ensure position relative for absolute positioning of overlay */
 }
 .bg-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -49,7 +50,7 @@
 
 .content {
   position: relative;
-  margin-top: 10rem;
+  margin-top: 8rem;
   left: 16.666667%; /* Adjust according to the sidebar width */
   width: 83.333333%;
 }

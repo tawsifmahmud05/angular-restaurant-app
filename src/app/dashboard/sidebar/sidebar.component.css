@@ -5,7 +5,7 @@
 
 .space {
   padding: 0px 10px;
-  background-color: rgb(224, 190, 167);
+  background-color: rgb(255, 255, 255);
 
   height: 100%;
   border-radius: 10px;
@@ -54,7 +54,7 @@
 
 @media (max-width: 767px) {
   .sidebar {
-    background-color: rgb(224, 190, 167);
+    background-color: rgb(255, 255, 255);
     height: 0;
     padding: 0px 10px;
     width: 100%;
@@ -69,7 +69,7 @@
     bottom: 0;
     left: 0;
     /* width: 100%; */
-    background-color: rgb(224, 190, 167);
+    background-color: rgb(255, 255, 255);
     z-index: 1000;
     display: flex;
     flex-direction: row;

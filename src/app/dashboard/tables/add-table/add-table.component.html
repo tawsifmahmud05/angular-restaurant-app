@@ -1,4 +1,4 @@
-<div class="container-fluid p-5 table">
+<div class="container-fluid table">
   <div class="mb-5">
     <h2 class="font-heading">Add Table</h2>
   </div>
@@ -68,14 +68,42 @@
         </div>
         <div class="col-md-4">
           <div class="d-flex h-100">
-            <input
+            <div *ngIf="!imageSelected" style="width: 100%">
+              <input
+                type="file"
+                id="image"
+                name="image"
+                class="form-control-file"
+                [(ngModel)]="table.image"
+                (change)="onFileSelected($event)"
+              />
+              <label for="image" class="custom-file-label"
+                >Add Table Image</label
+              >
+            </div>
+            <div *ngIf="imageSelected" style="width: 100%">
+              <button
+                type="button"
+                class="close"
+                class="cross-button"
+                (click)="toggleSelect()"
+              >
+                <span>&times;</span>
+              </button>
+              <img
+                class="table-image"
+                [src]="table.base64"
+                alt="{{ table.tableNumber }}"
+              />
+            </div>
+            <!-- <input
               type="file"
               id="image"
               name="image"
               class="form-control-file"
               [(ngModel)]="table.image"
             />
-            <label for="image" class="custom-file-label">Add Table Image</label>
+            <label for="image" class="custom-file-label">Add Table Image</label> -->
           </div>
         </div>
       </div>

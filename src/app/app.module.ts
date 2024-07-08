@@ -45,6 +45,8 @@ import { NotificationComponent } from './dashboard/shared/notification/notificat
 import { MatDialogActions, MatDialogClose, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from './dashboard/shared/confirmation-modal/confirmation-modal.component';
 import { CardComponent } from './dashboard/shared/card/card.component';
+import { CartComponent } from './dashboard/cart/cart.component';
+import { AssignModalComponent } from './dashboard/tables/assign-modal/assign-modal.component';
 
 
 @NgModule({
@@ -69,7 +71,9 @@ import { CardComponent } from './dashboard/shared/card/card.component';
     CardComponent,
     AddEmployeeComponent,
     AddTableComponent,
-    AddFoodComponent
+    AddFoodComponent,
+    CartComponent,
+    AssignModalComponent,
   ],
   providers: [provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent],
@@ -96,6 +100,8 @@ import { CardComponent } from './dashboard/shared/card/card.component';
     MatDialogModule,
     MatDialogActions,
     MatDialogClose,
-  ]
+    ReactiveFormsModule
+  ],
+
 })
 export class AppModule { }

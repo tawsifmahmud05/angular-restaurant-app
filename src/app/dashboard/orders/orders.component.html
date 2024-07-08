@@ -18,7 +18,10 @@
     <div class="row" *ngFor="let orderChunk of chunkedOrders">
       <!-- <app-card *ngFor="let order of orderChunk" [order]="order"></app-card> -->
       <div class="col-md-4" *ngFor="let order of orderChunk">
-        <app-card [order]="order"></app-card>
+        <app-card
+          [order]="order"
+          (ondeleteOrder)="onDeleteReload($event)"
+        ></app-card>
       </div>
     </div>
   </div>

@@ -12,6 +12,9 @@ import { NotificationService } from '../../shared/notification/notification.serv
 })
 export class AddEmployeeComponent implements OnInit {
 
+  imageSelected: boolean = false;
+
+
 
   employeeId: string | null = null;
 
@@ -60,6 +63,32 @@ export class AddEmployeeComponent implements OnInit {
 
         }
       );
+    }
+  }
+
+  toggleSelect(): void {
+    this.imageSelected = !this.imageSelected;
+    if (this.imageSelected == false) {
+      this.employee.image = ""
+      this.employee.base64 = ""
+
+    }
+
+  }
+
+  onFileSelected(event: Event): void {
+    this.toggleSelect();
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.employee.base64 = e.target?.result as string;
+      };
+
+      reader.readAsDataURL(file);
     }
   }
 

@@ -8,6 +8,7 @@ import { LoaderService } from '../../shared/loader.service';
 import { NotificationService } from '../../shared/notification/notification.service';
 import { ConfirmationModalComponent } from '../../shared/confirmation-modal/confirmation-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AssignModalComponent } from '../assign-modal/assign-modal.component';
 
 @Component({
   selector: 'app-table-table',
@@ -18,6 +19,7 @@ export class TableTableComponent {
 
   // displayedColumns: string[] = ['image', 'name', 'price', 'discountType', 'discount', 'discountPrice', 'action'];
   displayedColumns: string[] = ['tableNumber', 'numberOfSeats', 'isOccupied', 'employees', 'action'];
+  // displayedColumns: string[] = ['tableNumber', 'numberOfSeats', 'isOccupied', 'employees'];
   dataSource = new MatTableDataSource<Table>([]);
   totalRecords: number = 0;
   pageSize: number = 10;
@@ -35,19 +37,7 @@ export class TableTableComponent {
     this.loadTables(this.currentPage, this.pageSize);
 
   }
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  // }
 
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-
-  //   if (this.dataSource.paginator) {
-  //     this.dataSource.paginator.firstPage();
-  //   }
-  // }
 
   loadTables(page: number, perPage: number): void {
     this.dataStorageService.getTables(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(response => {
@@ -62,6 +52,22 @@ export class TableTableComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.onDeleteEmployeeTable(id)
+      } else {
+        // User clicked Cancel or clicked outside the dialog
+        console.log('Cancelled');
+      }
+    });
+  }
+  openAssignDialog(tableId: number, numberOfSeats: number, image: string): void {
+    const dialogRef = this.dialog.open(AssignModalComponent, {
+      // width: '50%',
+      // height: '50%',
+      data: { id: tableId, seat: numberOfSeats, img: image }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadTables(this.currentPage, this.pageSize);
       } else {
         // User clicked Cancel or clicked outside the dialog
         console.log('Cancelled');

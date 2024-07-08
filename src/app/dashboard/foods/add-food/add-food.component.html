@@ -1,4 +1,4 @@
-<div class="container-fluid p-5 table">
+<div class="container-fluid table">
   <div class="mb-5">
     <h2 class="font-heading">Add Food</h2>
   </div>
@@ -34,6 +34,7 @@
               [(ngModel)]="food.description"
               required
               #desciptionInput="ngModel"
+              style="height: 200px"
             ></textarea>
             <div
               *ngIf="
@@ -47,7 +48,7 @@
         </div>
         <div class="col-md-4">
           <div class="d-flex h-100">
-            <div *ngIf="!imageSelected">
+            <div *ngIf="!imageSelected" style="width: 100%">
               <input
                 type="file"
                 id="image"
@@ -56,27 +57,25 @@
                 [(ngModel)]="food.image"
                 (change)="onFileSelected($event)"
               />
+              <label for="image" class="custom-file-label"
+                >Add Food Image</label
+              >
             </div>
-            <div *ngIf="food.image">
-              <img [src]="food.base64" alt="{{ food.name }}" />
-            </div>
-            <!-- <div *ngIf="!imageSelected; else imageTemplate">
-              <input
-                type="file"
-                id="image"
-                name="image"
-                class="form-control-file"
-                [(ngModel)]="food.image"
-                (change)="onFileSelected($event); toggleSelect()"
+            <div *ngIf="imageSelected" style="width: 100%">
+              <button
+                type="button"
+                class="close"
+                class="cross-button"
+                (click)="toggleSelect()"
+              >
+                <span>&times;</span>
+              </button>
+              <img
+                class="food-image"
+                [src]="food.base64"
+                alt="{{ food.name }}"
               />
             </div>
-
-            <ng-template #imageTemplate>
-              <img [src]="food.base64" alt="{{ food.name }}" />
-            </ng-template>
-            -->
-
-            <label for="image" class="custom-file-label">Add Food Image</label>
           </div>
         </div>
       </div>

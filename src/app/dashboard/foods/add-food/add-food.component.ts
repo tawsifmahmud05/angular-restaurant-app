@@ -34,9 +34,6 @@ export class AddFoodComponent {
 
   }
 
-  toggleSelect(): void {
-    this.imageSelected = !this.imageSelected;
-  }
 
   discountedPrice() {
     if (this.food.discountType == 1) {
@@ -69,7 +66,17 @@ export class AddFoodComponent {
     }
   }
 
+  toggleSelect(): void {
+    this.imageSelected = !this.imageSelected;
+
+    if (this.imageSelected == false) {
+      this.food.image = ""
+      this.food.base64 = ""
+    }
+  }
+
   onFileSelected(event: Event): void {
+    this.toggleSelect();
     const input = event.target as HTMLInputElement;
 
     if (input.files && input.files[0]) {
