@@ -29,18 +29,26 @@ export class NewOrderComponent implements OnInit {
   private orderSubscription: Subscription;
 
   constructor(private dataStorageService: DataStorageService,
-    private loaderService: LoaderService,
-    private notificationService: NotificationService,
-    private dialog: MatDialog, private orderService: OrderService) {
+    private loaderService: LoaderService, private orderService: OrderService) {
+
+    var retrievedObject = localStorage.getItem('cart');
 
 
-    this.order = {
+    this.order = retrievedObject ? JSON.parse(retrievedObject) : {
       tableId: 0,
       orderNumber: "",
       amount: 0,
       phoneNumber: "",
       items: []
     };
+
+    if (this.order.amount != 0) {
+
+      this.selectedTableId = this.order.tableId;
+      this.selectTable(this.selectedTableId);
+
+    }
+
     // Subscribe to order changes
     this.orderSubscription = this.orderService.getOrder().subscribe(order => {
       this.order = order;

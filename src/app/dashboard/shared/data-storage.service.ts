@@ -122,4 +122,17 @@ export class DataStorageService {
     createRange(employeeTable: any): Observable<any> {
         return this.post(`${this.endpoints.employeeTable}/create-range`, employeeTable);
     }
+
+    getAllEmployees(): Observable<any> {
+        return this.get(`${this.endpoints.employee}/get`);
+    }
+    getAllTables(): Observable<any> {
+        return this.get(`${this.endpoints.table}/get`);
+    }
+    getAllFoods(): Observable<any> {
+        return this.get(`${this.endpoints.food}/get`);
+    }
+    getAllOrders(): Observable<any> {
+        return this.get(`${this.endpoints.order}/get`);
+    }
 }

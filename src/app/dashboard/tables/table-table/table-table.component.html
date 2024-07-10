@@ -142,10 +142,10 @@
           <div *ngFor="let employee of element.employees">
             <button
               type="button"
-              class="btn employee-btn my-1"
+              class="btn employee-btn my-1 w-100"
               (click)="openConfirmationDialog(employee.employeeTableId)"
             >
-              {{ employee.name }}
+              {{ employee.name.split(" ")[0] }}
               <span class="btn-label">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

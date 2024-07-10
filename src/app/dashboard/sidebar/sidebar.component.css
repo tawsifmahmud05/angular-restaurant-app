@@ -52,6 +52,17 @@
   height: 40px;
 }
 
+@media (min-width: 768px) and (max-width: 1200px) {
+  .sidebar-item {
+    display: none !important;
+    visibility: hidden;
+  }
+  nav ul li a {
+    display: flex !important;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 767px) {
   .sidebar {
     background-color: rgb(255, 255, 255);
@@ -68,7 +79,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    /* width: 100%; */
+    width: 100%;
     background-color: rgb(255, 255, 255);
     z-index: 1000;
     display: flex;

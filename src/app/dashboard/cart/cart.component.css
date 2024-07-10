@@ -46,3 +46,9 @@
   align-items: center;
   width: 100%;
 }
+
+@media (max-width: 767px) {
+  .scrollable-container {
+    height: calc(100vh - 350px);
+  }
+}

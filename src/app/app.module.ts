@@ -47,6 +47,7 @@ import { ConfirmationModalComponent } from './dashboard/shared/confirmation-moda
 import { CardComponent } from './dashboard/shared/card/card.component';
 import { CartComponent } from './dashboard/cart/cart.component';
 import { AssignModalComponent } from './dashboard/tables/assign-modal/assign-modal.component';
+import { InfoCardComponent } from './dashboard/admin/info-card/info-card.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { AssignModalComponent } from './dashboard/tables/assign-modal/assign-mod
     AddFoodComponent,
     CartComponent,
     AssignModalComponent,
+    InfoCardComponent,
   ],
   providers: [provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent],

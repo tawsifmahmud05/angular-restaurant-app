@@ -40,6 +40,16 @@
 }
 
 @media (max-width: 767px) {
+  .navbar a img {
+    height: 30px;
+    width: 30px;
+  }
+  .navbar a span {
+    color: rgb(200, 50, 50);
+    font-weight: 700;
+    font-size: 18px;
+    text-shadow: 1px 1px grey;
+  }
   .logout-btn {
     display: block;
     visibility: visible;

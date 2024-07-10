@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>Assign Employee To a Table</h2>
 <mat-dialog-content>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 d-flex align-items-center">
       <img
         class="img-fluid"
         [src]="'https://restaurantapi.bssoln.com/images/table/' + data.img"
@@ -9,11 +9,11 @@
       />
     </div>
     <div class="col-md-6 p-3">
-      <div class="fs-3 mb-3">
+      <div class="fs-5 mb-3">
         <span>Table ID: {{ data.id }}</span>
       </div>
-      <div class="fs-3 mb-3">
-        <span>Table ID: {{ data.seat }}</span>
+      <div class="fs-5 mb-3">
+        <span>Table Size: {{ data.seat }}</span>
       </div>
       <mat-form-field>
         <mat-label>Employees</mat-label>
@@ -23,10 +23,21 @@
           }
         </mat-select>
       </mat-form-field>
+      <!-- <select class="form-multi-select" multiple data-coreui-search="true">
+        <option value="0" selected>Angular</option>
+        <option value="1">Bootstrap</option>
+        <option value="2">React.js</option>
+        <option value="3">Vue.js</option>
+        <optgroup label="backend">
+          <option value="4">Django</option>
+          <option value="5" selected>Laravel</option>
+          <option value="6">Node.js</option>
+        </optgroup>
+      </select> -->
     </div>
   </div>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
+<mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>
   <button
     mat-button
@@ -34,6 +45,6 @@
     cdkFocusInitial
     (click)="onProceedClick()"
   >
-    Proceed
+    Assign
   </button>
 </mat-dialog-actions>
