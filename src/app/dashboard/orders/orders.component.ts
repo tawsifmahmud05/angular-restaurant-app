@@ -13,6 +13,7 @@ export class OrdersComponent implements OnInit {
 
   orders: Order[] = [];
   chunkedOrders: Order[][] = [];
+  isFoundData = false;
 
   constructor(private dataStorageService: DataStorageService,
     private loaderService: LoaderService,
@@ -23,9 +24,12 @@ export class OrdersComponent implements OnInit {
 
       this.orders = data.data;
       this.chunkOrders();
-      console.log(this.chunkedOrders);
-
-    });
+      this.isFoundData = true;
+    },
+      error => {
+        this.notificationService.showError("Try again");
+        this.loaderService.hideLoader();
+      });
   }
 
   chunkOrders(): void {

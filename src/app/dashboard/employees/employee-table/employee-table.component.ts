@@ -21,6 +21,7 @@ export class EmployeeTableComponent implements OnInit {
   totalRecords: number = 0;
   pageSize: number = 10;
   currentPage: number = 1;
+  isFoundData = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   // @ViewChild(MatSort) sort!: MatSort;
@@ -38,10 +39,16 @@ export class EmployeeTableComponent implements OnInit {
 
   }
   loadEmployees(page: number, perPage: number): void {
-    this.dataStorageService.getEmployees(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(response => {
-      this.dataSource = response.data;
-      this.totalRecords = response.totalRecords;
-    });
+    this.dataStorageService.getEmployees(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(
+      response => {
+        this.dataSource = response.data;
+        this.totalRecords = response.totalRecords;
+        this.isFoundData = true;
+      },
+      error => {
+        this.notificationService.showError("Try again");
+        this.loaderService.hideLoader();
+      });
   }
 
   // applyFilter(event: Event) {

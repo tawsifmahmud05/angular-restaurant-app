@@ -22,7 +22,7 @@ export class FoodTableComponent implements OnInit, AfterViewInit {
   totalRecords: number = 0;
   pageSize: number = 10;
   currentPage: number = 1;
-
+  isFoundData = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -42,7 +42,12 @@ export class FoodTableComponent implements OnInit, AfterViewInit {
     this.dataStorageService.getFoods(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(response => {
       this.dataSource = response.data;
       this.totalRecords = response.totalRecords;
-    });
+      this.isFoundData = true;
+    },
+      error => {
+        this.notificationService.showError("Try again");
+        this.loaderService.hideLoader();
+      });
   }
 
   onDeleteFood(id: any) {

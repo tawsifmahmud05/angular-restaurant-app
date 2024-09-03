@@ -24,7 +24,7 @@ export class TableTableComponent {
   totalRecords: number = 0;
   pageSize: number = 10;
   currentPage: number = 1;
-
+  isFoundData = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   // @ViewChild(MatSort) sort!: MatSort;
 
@@ -43,7 +43,13 @@ export class TableTableComponent {
     this.dataStorageService.getTables(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(response => {
       this.dataSource = response.data;
       this.totalRecords = response.totalRecords;
-    });
+      this.isFoundData = true;
+
+    },
+      error => {
+        this.notificationService.showError("Try again");
+        this.loaderService.hideLoader();
+      });
   }
 
   openConfirmationDialog(id: any): void {
