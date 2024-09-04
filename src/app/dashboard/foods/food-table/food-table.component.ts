@@ -23,6 +23,7 @@ export class FoodTableComponent implements OnInit, AfterViewInit {
   pageSize: number = 10;
   currentPage: number = 1;
   isFoundData = false;
+  isMobile: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -31,6 +32,10 @@ export class FoodTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.loadFoods(this.currentPage, this.pageSize);
+    this.isMobile = window.innerWidth <= 767; // Check if the screen width is 767px or less
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth <= 767;
+    });
 
   }
   ngAfterViewInit() {

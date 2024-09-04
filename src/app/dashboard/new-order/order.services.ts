@@ -156,13 +156,15 @@ export class OrderService {
             items: []
         };
         currentOrder = initialOrder;
-        localStorage.setItem('cart', JSON.stringify(currentOrder));
+        localStorage.removeItem('cart');
+        // localStorage.setItem('cart', JSON.stringify(currentOrder));
         this.orderSubject.next(currentOrder);
     }
     removeFoods() {
         var currentFood = this.foodSubject.value;
         const initialFoods: Food[] = [];
         currentFood = initialFoods;
+        localStorage.removeItem('cart-food-list');
         this.foodSubject.next(currentFood);
     }
 

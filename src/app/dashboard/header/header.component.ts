@@ -40,20 +40,22 @@ export class HeaderComponent {
   }
 
   ngOnInit(): void {
-    this.authService.currentUser$.subscribe((user) => {
-      this.currentUser = user;
-    });
-
+    this.currentUser = this.authService.getCurrentUser();
     console.log(this.currentUser);
-
   }
 
   logout() {
-    // Clear localStorage or any stored user data
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    // // Clear localStorage or any stored user data
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('user');
 
-    // Redirect to login page
+    // // Redirect to login page
+    // this.router.navigate(['']);
+    // Log out the user using the AuthService
+    this.authService.logout();
+
+    // Clear the local state and redirect to login page
+    this.currentUser = null;
     this.router.navigate(['']);
   }
 

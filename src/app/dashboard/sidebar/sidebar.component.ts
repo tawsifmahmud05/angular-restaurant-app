@@ -18,20 +18,30 @@ export class SidebarComponent {
   ) { }
 
   ngOnInit(): void {
-    this.authService.currentUser$.subscribe((user) => {
-      this.currentUser = user;
-    });
+    // this.authService.currentUser$.subscribe((user) => {
+    //   this.currentUser = user;
+    // });
 
-    console.log(this.currentUser);
+    this.currentUser = this.authService.getCurrentUser();
+    console.log('Current User:', this.currentUser);
 
   }
 
   logout() {
-    // Clear localStorage or any stored user data
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    // // Clear localStorage or any stored user data
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('user');
 
-    // Redirect to login page
+    // // Update AuthService currentUserSubject to null
+    // this.authService.currentUser$.subscribe(() => {
+    //   this.authService.currentUserSubject.next(null);
+    // });
+
+    // // Redirect to login page
+    // this.router.navigate(['']);
+
+    this.authService.logout();
+    this.currentUser = null; // Update local state
     this.router.navigate(['']);
   }
 }

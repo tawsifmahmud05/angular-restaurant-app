@@ -1,13 +1,13 @@
-<div class="container-fluid table">
-  <div class="mb-5">
+<div class="container-fluid table text-start">
+  <div class="mb-3">
     <h2 class="font-heading">Add Employee</h2>
   </div>
-  <div class="form p-3">
+  <div class="form p-3 mobile-margin-bottom">
     <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
-      <div class="row">
+      <div class="row image-flex-direction">
         <div class="col-md-8">
-          <div>
-            <label for="firstName" class="form-label">First Name</label>
+          <div class="mb-3">
+            <label for="firstName" class="form-label fw-bold">First Name</label>
             <input
               type="text"
               id="firstName"
@@ -26,7 +26,7 @@
               First name is required.
             </div>
           </div>
-          <div>
+          <div class="mb-3">
             <label for="name" class="form-label">Middle Name</label>
             <input
               type="text"
@@ -46,7 +46,7 @@
               Middle name is required.
             </div>
           </div>
-          <div>
+          <div class="mb-3">
             <label for="name" class="form-label">Last Name</label>
             <input
               type="text"
@@ -82,17 +82,26 @@
                 >Add Employee Image</label
               >
             </div>
-            <div *ngIf="imageSelected" style="width: 100%">
+            <div *ngIf="imageSelected" style="width: 100%; position: relative">
               <button
                 type="button"
-                class="close"
-                class="cross-button"
+                class="close cross-button"
+                style="
+                  position: absolute;
+                  top: 10px;
+                  left: 10px;
+                  z-index: 1;
+                  background-color: rgba(255, 255, 255, 0.6);
+                  border: none;
+                  font-size: 24px;
+                  color: rgb(0, 0, 0);
+                "
                 (click)="toggleSelect()"
               >
                 <span>&times;</span>
               </button>
               <img
-                class="food-image"
+                class="food-image img-fluid"
                 [src]="employee.base64"
                 alt="{{ employee.firstName }}"
               />

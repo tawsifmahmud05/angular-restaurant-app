@@ -55,9 +55,15 @@ th {
     background-color: transparent;
   }
   .mobile-label {
-    width: 100px;
+    width: 50%;
     display: inline-block;
     font-weight: bold;
+  }
+  .align-label {
+    align-items: stretch;
+  }
+  .align-bin {
+    flex-direction: row-reverse;
   }
 
   .mat-header-row {
@@ -74,5 +80,7 @@ th {
   }
   .mat-mdc-cell {
     border: 0px solid white;
+    padding: 0px;
+    font-size: large;
   }
 }

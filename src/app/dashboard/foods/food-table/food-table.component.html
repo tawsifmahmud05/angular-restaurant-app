@@ -18,8 +18,8 @@
     <!-- Position Column -->
     <ng-container matColumnDef="image">
       <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Image</span>
+      <mat-cell *matCellDef="let element" class="food-image">
+        <!-- <span class="mobile-label">Image</span> -->
         <img
           [src]="
             'https://restaurantapi.bssoln.com/images/food/' + element.image
@@ -72,8 +72,7 @@
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <span class="mobile-label"></span>
+      <mat-cell *matCellDef="let element" style="justify-content: center">
         <div class="row d-flex">
           <div class="col">
             <svg

@@ -1,10 +1,10 @@
-<div class="container-fluid table">
-  <div class="mb-5">
+<div class="container-fluid table text-start">
+  <div class="mb-3">
     <h2 class="font-heading">Add Table</h2>
   </div>
-  <div class="form p-3">
+  <div class="form p-3 mobile-margin-bottom">
     <form #tableForm="ngForm" (ngSubmit)="onSubmit(tableForm)">
-      <div class="row">
+      <div class="row image-flex-direction">
         <div class="col-md-8">
           <div>
             <label for="tableNumber" class="form-label">Table Number</label>
@@ -81,19 +81,29 @@
                 >Add Table Image</label
               >
             </div>
-            <div *ngIf="imageSelected" style="width: 100%">
+            <div *ngIf="imageSelected" style="width: 100%; position: relative">
               <button
                 type="button"
-                class="close"
-                class="cross-button"
+                class="close cross-button"
+                style="
+                  position: absolute;
+                  top: 10px;
+                  left: 10px;
+                  z-index: 1;
+                  background-color: rgba(255, 255, 255, 0.6);
+                  border: none;
+                  font-size: 24px;
+                  color: rgb(0, 0, 0);
+                "
                 (click)="toggleSelect()"
               >
                 <span>&times;</span>
               </button>
               <img
-                class="table-image"
+                class="table-image img-fluid"
                 [src]="table.base64"
                 alt="{{ table.tableNumber }}"
+                style="display: block; width: 100%; height: auto"
               />
             </div>
             <!-- <input

@@ -15,12 +15,12 @@ export class AddFoodComponent {
   imageSelected: boolean = false;
 
   food = {
-    name: "Pudding",
-    description: "lorem Ipsum",
-    price: 300,
+    name: "",
+    description: "",
+    price: 0,
     discountType: 0,
     discount: 0,
-    discountPrice: 300,
+    discountPrice: 0,
     image: "",
     base64: "aGVsbG8gd29ybGQ="
   };
@@ -36,12 +36,25 @@ export class AddFoodComponent {
 
 
   discountedPrice() {
+    if (this.food.price < 0) {
+      this.food.price = 0;
+    }
+
+    if (this.food.discount < 0) {
+      this.food.discount = 0;
+    }
+
+
     if (this.food.discountType == 1) {
       this.food.discountPrice = this.food.price - this.food.discount;
     } else if (this.food.discountType == 2) {
       this.food.discountPrice = this.food.price - (this.food.price * this.food.discount / 100);
     } else {
       this.food.discountPrice = this.food.price;
+    }
+
+    if (this.food.discountPrice < 0) {
+      this.food.discountPrice = 0;
     }
   }
 

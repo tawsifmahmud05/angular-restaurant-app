@@ -74,7 +74,7 @@ export class CartComponent implements OnInit {
   }
 
   submitOrder() {
-    this.orderService.setOrderNumber(new Date().toISOString());
+    this.orderService.setOrderNumber(new Date().getTime().toString());
 
     this.dataStorageService.addOrder(this.order).pipe(this.loaderService.attachLoader()).subscribe(response => {
       console.log(response);

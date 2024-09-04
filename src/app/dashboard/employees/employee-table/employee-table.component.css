@@ -49,9 +49,20 @@ mat-column-action {
     background-color: transparent;
   }
   .mobile-label {
-    width: 100px;
+    width: 40%;
     display: inline-block;
     font-weight: bold;
+  }
+  .employee-image {
+    width: 100% !important;
+    justify-content: center;
+  }
+
+  .circular-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   .mat-header-row {
@@ -71,5 +82,7 @@ mat-column-action {
   }
   .mat-mdc-cell {
     border: 0px solid white;
+    padding: 0px;
+    font-size: large;
   }
 }

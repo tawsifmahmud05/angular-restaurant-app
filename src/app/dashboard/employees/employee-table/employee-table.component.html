@@ -19,7 +19,7 @@
     <!-- Position Column -->
     <ng-container matColumnDef="image">
       <mat-header-cell *matHeaderCellDef>Image </mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell *matCellDef="let element" class="employee-image">
         <img
           [src]="
             'https://restaurantapi.bssoln.com/images/user/' + element.user.image
@@ -74,8 +74,7 @@
       <mat-header-cell *matHeaderCellDef class="text-center">
         Action
       </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <span class="mobile-label"></span>
+      <mat-cell *matCellDef="let element" style="justify-content: center">
         <div class="row d-flex">
           <div class="col">
             <a>

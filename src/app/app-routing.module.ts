@@ -12,11 +12,13 @@ import { OrdersComponent } from "./dashboard/orders/orders.component";
 import { AddEmployeeComponent } from "./dashboard/employees/add-employee/add-employee.component";
 import { AddTableComponent } from "./dashboard/tables/add-table/add-table.component";
 import { AddFoodComponent } from "./dashboard/foods/add-food/add-food.component";
+import { LoginGuard } from "./auth/login.guard";
 
 const appRoutes: Routes = [
     {
         path: '',
-        component: AuthComponent
+        component: AuthComponent,
+        canActivate: [LoginGuard]
     },
     {
         path: 'dashboard',

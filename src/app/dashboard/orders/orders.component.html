@@ -26,7 +26,7 @@
   >
     <h1>No Data Found</h1>
   </div>
-  <div *ngIf="isFoundData" class="order-list-container">
+  <div *ngIf="isFoundData" class="order-list-container mobile-margin-bottom">
     <div class="row" *ngFor="let orderChunk of chunkedOrders">
       <!-- <app-card *ngFor="let order of orderChunk" [order]="order"></app-card> -->
       <div class="col-md-4" *ngFor="let order of orderChunk">

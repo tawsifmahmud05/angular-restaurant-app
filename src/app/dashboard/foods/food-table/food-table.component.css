@@ -42,9 +42,21 @@ th {
     background-color: transparent;
   }
   .mobile-label {
-    width: 100px;
+    width: 50%;
     display: inline-block;
     font-weight: bold;
+  }
+
+  .food-image {
+    width: 100% !important;
+    justify-content: center;
+  }
+
+  .circular-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   .mat-header-row {
@@ -61,5 +73,7 @@ th {
   }
   .mat-mdc-cell {
     border: 0px solid white;
+    padding: 0px;
+    font-size: large;
   }
 }

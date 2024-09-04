@@ -148,7 +148,8 @@
 
     <ng-container matColumnDef="employees">
       <mat-header-cell *matHeaderCellDef>Employees</mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell *matCellDef="let element" class="align-label">
+        <span class="mobile-label">Employees:</span>
         <div class="employee-buttons">
           <div *ngFor="let employee of element.employees">
             <button
@@ -205,7 +206,7 @@
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell *matCellDef="let element" class="align-bin">
         <div>
           <a (click)="onDeleteTable(element.id)" class="delete-btn">
             <svg

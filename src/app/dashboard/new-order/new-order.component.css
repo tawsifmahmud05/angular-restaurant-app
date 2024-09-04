@@ -114,3 +114,15 @@
   background-color: rgb(200, 50, 50);
   padding: 10px 40px;
 }
+
+@media (max-width: 767px) {
+  .scrollable-container {
+    height: auto;
+  }
+  .table-container {
+    height: auto;
+  }
+  .food-container {
+    margin-bottom: 100px;
+  }
+}

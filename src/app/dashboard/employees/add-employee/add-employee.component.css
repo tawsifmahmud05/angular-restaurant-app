@@ -15,6 +15,10 @@
   display: none; /* Hide the default file input button */
 }
 
+.form-label {
+  font-weight: bold;
+}
+
 .custom-file-label {
   display: flex;
   align-items: center;
