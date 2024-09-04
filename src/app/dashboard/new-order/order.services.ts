@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Order, OrderItem } from './order.model';  // Adjust the import path as needed
 import { Food } from '../foods/food.model';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -167,6 +168,7 @@ export class OrderService {
         localStorage.removeItem('cart-food-list');
         this.foodSubject.next(currentFood);
     }
+
 
 
 }

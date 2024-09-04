@@ -24,3 +24,7 @@
 .font-weight-bold {
   font-weight: 700 !important;
 }
+
+.bg-trans {
+  background-color: white !important;
+}

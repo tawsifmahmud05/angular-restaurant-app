@@ -61,15 +61,19 @@
         <span class="font-weight-bold"> {{ order.table.tableNumber }}</span>
       </p>
       <div class="d-flex align-items-center justify-content-between">
-        <p class="font-weight-bold text-end mt-1 mx-2 text-orange-darken-1">
+        <!-- <p class="font-weight-bold text-end mt-1 mx-2 text-orange-darken-1">
           {{ order.orderStatus }}
-        </p>
-        <i
-          data-v-18f8da38=""
-          class="mdi-circle-edit-outline mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--clickable status-change-icon mt-1"
-          role="button"
-          aria-hidden="false"
-        ></i>
+        </p> -->
+        <mat-form-field>
+          <mat-select
+            [(value)]="selectedStatusValue"
+            (selectionChange)="onStatusChange($event.value)"
+          >
+            <mat-option *ngFor="let status of statuses" [value]="status.value">
+              {{ status.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
   </mat-card-actions>

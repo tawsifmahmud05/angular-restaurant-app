@@ -78,7 +78,7 @@ export class CartComponent implements OnInit {
 
     this.dataStorageService.addOrder(this.order).pipe(this.loaderService.attachLoader()).subscribe(response => {
       console.log(response);
-
+      this.notificationService.showSuccess("Order Placed")
     });
 
     this.orderService.removeOrder();

@@ -48,11 +48,18 @@ export class DataStorageService {
         });
     }
 
+    private put(endpoint: string, body: any): Observable<any> {
+        return this.http.put<any>(`${this.baseUrl}${endpoint}`, body, {
+            headers: this.getHeaders(),
+        });
+    }
+
     private delete(endpoint: string): Observable<any> {
         return this.http.delete<any>(`${this.baseUrl}${endpoint}`, {
             headers: this.getHeaders(),
         });
     }
+
 
     getEmployees(page: number, perPage: number): Observable<any> {
         const params = new HttpParams()
@@ -135,4 +142,11 @@ export class DataStorageService {
     getAllOrders(): Observable<any> {
         return this.get(`${this.endpoints.order}/get`);
     }
+
+    // Method to update order status using PUT
+    updateOrderStatus(orderId: string, status: number): Observable<any> {
+        const body = { status };
+        return this.put(`${this.endpoints.order}/update-status/${orderId}`, body);
+    }
+
 }

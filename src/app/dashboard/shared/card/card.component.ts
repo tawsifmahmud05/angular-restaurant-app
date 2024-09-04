@@ -15,11 +15,44 @@ export class CardComponent implements OnInit {
   order!: Order;
   @Output() ondeleteOrder = new EventEmitter<boolean>();
 
+  statuses = [
+    { value: '0', label: 'Pending' },
+    { value: '1', label: 'Confirmed' },
+    { value: '2', label: 'Preparing' },
+    { value: '3', label: 'Prepared to Serve' },
+    { value: '4', label: 'Served' },
+    { value: '5', label: 'Paid' }
+  ];
+
+  selectedStatus: string | undefined;
+  selectedStatusValue: string | undefined;
+
 
   constructor(private router: Router, private dataStorageService: DataStorageService, private loaderService: LoaderService, private notificationService: NotificationService) { }
   ngOnInit(): void {
     console.log(this.order);
+    this.loadOrderStatus();
+    this.selectedStatusValue = this.getValueFromLabel(this.selectedStatus!);
+  }
 
+  getValueFromLabel(label: string): string {
+    const status = this.statuses.find(s => s.label === label);
+    return status ? status.value : '';
+  }
+
+  onStatusChange(status: string): void {
+    if (this.order) {
+      this.dataStorageService.updateOrderStatus(this.order.id, parseInt(status)).subscribe(() => {
+        this.notificationService.showSuccess("Order Status updated successfully.")
+        console.log('Order status updated to:', status);
+
+      });
+    }
+  }
+
+  // Load current order status from service and set selectedStatus
+  loadOrderStatus(): void {
+    this.selectedStatus = this.order.orderStatus;
   }
 
   deleteOrder(orderId: string) {
