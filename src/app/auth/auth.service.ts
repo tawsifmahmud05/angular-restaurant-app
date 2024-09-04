@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Admin } from './user.model';
@@ -40,8 +40,16 @@ export class AuthService {
   //   );
   // }
   login(userName: string, password: string): Observable<any> {
+
+    // Prepare the headers
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',  // Typical headers, can be modified
+      'Access-Control-Allow-Origin': '*',  // Allow CORS (this is usually controlled by the server)
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',  // Headers allowed (if needed)
+      'Authorization': 'Bearer your-token-if-applicable'  // If you need authorization token for CORS API
+    });
     const body = { userName, password };
-    return this.http.post<any>(this.loginUrl, body).pipe(
+    return this.http.post<any>(this.loginUrl, body, { headers }).pipe(
       tap(response => {
         // Store token and user data in localStorage
         localStorage.setItem('token', response.token);
