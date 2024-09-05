@@ -67,8 +67,8 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="d-flex h-100">
-            <div *ngIf="!imageSelected" style="width: 100%">
+          <div class="d-flex h-100 my-2">
+            <div *ngIf="!imageSelected" style="width: 100%; height: 220px">
               <input
                 type="file"
                 id="image"
@@ -81,7 +81,10 @@
                 >Add Table Image</label
               >
             </div>
-            <div *ngIf="imageSelected" style="width: 100%; position: relative">
+            <div
+              *ngIf="imageSelected"
+              style="width: 100%; position: relative; text-align: center"
+            >
               <button
                 type="button"
                 class="close cross-button"
@@ -103,7 +106,6 @@
                 class="table-image img-fluid"
                 [src]="table.base64"
                 alt="{{ table.tableNumber }}"
-                style="display: block; width: 100%; height: auto"
               />
             </div>
             <!-- <input

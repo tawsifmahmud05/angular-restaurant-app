@@ -48,7 +48,8 @@ textarea.ng-invalid.ng-touched {
   position: absolute;
   z-index: 1;
 }
-.food-image {
+.table-image {
   position: relative;
-  width: 100%;
+  width: 220px;
+  height: 220px;
 }

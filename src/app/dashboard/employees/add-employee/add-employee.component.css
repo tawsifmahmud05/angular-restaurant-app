@@ -50,5 +50,6 @@ textarea.ng-invalid.ng-touched {
 }
 .food-image {
   position: relative;
-  width: 100%;
+  width: 220px;
+  height: 220px;
 }
