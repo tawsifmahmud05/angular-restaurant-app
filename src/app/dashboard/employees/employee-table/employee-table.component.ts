@@ -43,7 +43,21 @@ export class EmployeeTableComponent implements OnInit {
       response => {
         this.dataSource = response.data;
         this.totalRecords = response.totalRecords;
-        this.isFoundData = true;
+        if (this.totalRecords < 1) {
+          this.isFoundData = false;
+        } else {
+
+          this.isFoundData = true
+        }
+
+        // if (this.dataSource.data.length === 0) {
+        //   this.isFoundData = false;
+        // } else {
+        //   console.log('The dataSource has data');
+        //   this.isFoundData = true;
+        // }
+
+
       },
       error => {
         this.notificationService.showError("Try again");

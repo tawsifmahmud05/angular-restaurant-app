@@ -52,6 +52,9 @@ body {
 .delete-btn:hover {
   fill: red;
 }
+.content-padding {
+  padding: 10px;
+}
 
 @media (max-width: 767px) {
   .add-btn {

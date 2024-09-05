@@ -19,7 +19,10 @@ export class NewOrderComponent implements OnInit {
   tableData: Table[] = [];
   foodData: Food[] = [];
 
-  isTableSelected: boolean = false;
+  isFoundtableData: boolean = true;
+  isFoundfoodData: boolean = true;
+
+  isTableSelected: boolean = true;
 
   selectedTableId: number | null = null;
 
@@ -69,6 +72,15 @@ export class NewOrderComponent implements OnInit {
   loadTables(page: number, perPage: number): void {
     this.dataStorageService.getTables(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(response => {
       this.tableData = response.data;
+
+      if (this.tableData.length > 0) {
+        this.isFoundtableData = true;
+        this.isTableSelected = false;
+
+      } else {
+        this.isFoundtableData = false;
+      }
+
       console.log(this.tableData);
     });
   }
@@ -77,6 +89,11 @@ export class NewOrderComponent implements OnInit {
     this.dataStorageService.getFoods(page, perPage).subscribe(response => {
       this.foodData = response.data;
       console.log(this.foodData);
+      if (this.foodData.length > 0) {
+        this.isFoundfoodData = true;
+      } else {
+        this.isFoundfoodData = false;
+      }
 
     });
   }

@@ -47,7 +47,12 @@ export class FoodTableComponent implements OnInit, AfterViewInit {
     this.dataStorageService.getFoods(page, perPage).pipe(this.loaderService.attachLoader()).subscribe(response => {
       this.dataSource = response.data;
       this.totalRecords = response.totalRecords;
-      this.isFoundData = true;
+      if (this.totalRecords < 1) {
+        this.isFoundData = false;
+      } else {
+
+        this.isFoundData = true
+      }
     },
       error => {
         this.notificationService.showError("Try again");

@@ -24,7 +24,12 @@ export class OrdersComponent implements OnInit {
 
       this.orders = data.data;
       this.chunkOrders();
-      this.isFoundData = true;
+      if (this.orders.length < 1) {
+        this.isFoundData = false;
+      } else {
+
+        this.isFoundData = true
+      }
     },
       error => {
         this.notificationService.showError("Try again");

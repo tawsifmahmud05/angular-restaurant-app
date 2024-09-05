@@ -64,10 +64,11 @@
         <!-- <p class="font-weight-bold text-end mt-1 mx-2 text-orange-darken-1">
           {{ order.orderStatus }}
         </p> -->
-        <mat-form-field>
+        <mat-form-field appearance="outline" class="custom-width">
           <mat-select
             [(value)]="selectedStatusValue"
             (selectionChange)="onStatusChange($event.value)"
+            panelClass="custom-select-panel"
           >
             <mat-option *ngFor="let status of statuses" [value]="status.value">
               {{ status.label }}

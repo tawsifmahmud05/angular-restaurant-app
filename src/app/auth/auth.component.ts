@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { LoaderService } from '../dashboard/shared/loader.service';
+import { NotificationService } from '../dashboard/shared/notification/notification.service';
 
 @Component({
   selector: 'app-auth',
@@ -20,7 +21,8 @@ export class AuthComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private notificationService: NotificationService
   ) { }
 
   // Password Visibility
@@ -42,6 +44,8 @@ export class AuthComponent {
         },
         (error) => {
           console.error('Login failed:', error);
+          this.loaderService.hideLoader();
+          this.notificationService.showError("Check your Username or Password")
           // Handle login failure
         },
       );

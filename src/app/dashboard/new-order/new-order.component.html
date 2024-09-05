@@ -11,7 +11,30 @@
             <div class="d-flex justify-content-center mb-3 fw-bold">
               SELECT A TABLE ({{ tableData.length }})
             </div>
-            <div class="scrollable-container">
+            <div
+              *ngIf="!isFoundtableData"
+              style="
+                width: 100%;
+                /* height: 500px; */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <h3>No table found</h3>
+
+              <button
+                class="btn add-btn"
+                style="margin: auto"
+                type="button"
+                routerLink="/dashboard/tables/add"
+                routerLinkActive="active"
+              >
+                Add Table
+              </button>
+            </div>
+            <div *ngIf="isFoundtableData" class="scrollable-container">
               <div
                 class="card"
                 *ngFor="let table of tableData"
@@ -60,12 +83,37 @@
               <div class="d-flex justify-content-start mb-3 fw-bold">
                 SELECT FOODS ({{ foodData.length }})
               </div>
+              <div
+                *ngIf="!isFoundfoodData"
+                style="
+                  width: 100%;
+                  /* height: 500px; */
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <h3>No food found</h3>
 
+                <button
+                  class="btn add-btn"
+                  style="margin: auto"
+                  type="button"
+                  routerLink="/dashboard/foods/add"
+                  routerLinkActive="active"
+                >
+                  Add Food
+                </button>
+              </div>
               <div class="scrollable-container">
                 <div class="food-card mb-3" *ngFor="let food of foodData">
                   <div class="row">
                     <div class="col-md-3">
-                      <div class="food-img-container mx-4">
+                      <div
+                        class="food-img-container"
+                        style="display: flex; justify-content: center"
+                      >
                         <img
                           class="rounded-circle"
                           [src]="
@@ -82,8 +130,8 @@
                         <p>
                           {{ food.description }}
                         </p>
-                        <div class="price-btn-container mt-4">
-                          <div class="mb-5 mb-lg-0">
+                        <div class="row price-btn-container mt-4">
+                          <div class="col-md-6 mb-lg-0">
                             <div *ngIf="food.discountType == 'None'">
                               <p class="me-4 text-h6">
                                 Price:
@@ -118,8 +166,9 @@
 
                             <!---->
                           </div>
-                          <div>
+                          <div class="col-md-6 d-flex">
                             <button
+                              style="margin-left: auto"
                               class="btn add-to-cart-btn"
                               [disabled]="disabledButtons[food.id]"
                               (click)="addItem(food)"

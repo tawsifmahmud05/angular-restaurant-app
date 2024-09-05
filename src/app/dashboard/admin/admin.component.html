@@ -3,24 +3,32 @@
     <app-info-card
       [countNumber]="employees.length"
       [countType]="'Employees'"
+      routerLink="/dashboard/employees/employee-list"
+      routerLinkActive="active"
     ></app-info-card>
   </div>
   <div class="col-lg-6 col-md-6 col-sm-12">
     <app-info-card
       [countNumber]="tables.length"
       [countType]="'Tables'"
+      routerLink="/dashboard/tables/table-list"
+      routerLinkActive="active"
     ></app-info-card>
   </div>
   <div class="col-lg-6 col-md-6 col-sm-12">
     <app-info-card
       [countNumber]="foods.length"
       [countType]="'Foods'"
+      routerLink="/dashboard/foods/food-list"
+      routerLinkActive="active"
     ></app-info-card>
   </div>
   <div class="col-lg-6 col-md-6 col-sm-12">
     <app-info-card
       [countNumber]="orders.length"
       [countType]="'Orders'"
+      routerLink="/dashboard/orders/order-list"
+      routerLinkActive="active"
     ></app-info-card>
   </div>
 </div>
