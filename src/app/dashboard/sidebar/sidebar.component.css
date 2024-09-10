@@ -3,7 +3,7 @@
 }
 
 .space {
-  padding: 0px 10px;
+  padding: 0px 5px;
   background-color: rgb(255, 255, 255);
 
   height: 100%;
@@ -12,7 +12,7 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25); */
-  border-radius: 20px;
+  /* border-radius: 20px; */
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .nav-link {
@@ -26,13 +26,15 @@
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  background-color: rgb(200, 50, 50);
+  background-color: bisque;
   width: 100%;
+  color: rgb(200, 50, 50);
 }
 
 .nav-item {
   display: flex;
   justify-content: start;
+  text-align: start;
 }
 
 .btn-label {
