@@ -6,19 +6,19 @@
           src="assets/images/logo.png"
           style="height: 50px; width: 50px"
           alt=""
-        /><span>BSS Restaurant</span></a
+        /><span class="brandName">BSS Restaurant</span></a
       >
     </div>
     <div class="d-flex">
       <a
-        class="cart-buttton position-relative"
+        class="cart-buttton position-relative mx-1"
         [ngClass]="{ active: isToggled }"
         (click)="onToggleSidebar()"
       >
-        <svg
+        <!-- <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
+          width="24"
+          height="24"
           fill="currentColor"
           class="bi bi-cart2"
           viewBox="0 0 16 16"
@@ -26,7 +26,10 @@
           <path
             d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"
           />
-        </svg>
+        </svg> -->
+        <span class="material-symbols-outlined" style="font-size: 32px">
+          shopping_cart
+        </span>
         <span
           *ngIf="order?.items?.length != 0"
           class="position-absolute top-0 start-100 translate-middle badge d-flex justify-content-center"
@@ -43,9 +46,17 @@
           }}<span class="visually-hidden">unread messages</span>
         </span>
       </a>
+      <span
+        class="material-symbols-outlined mx-1 logout-btn"
+        style="margin: auto"
+        (click)="logout()"
+      >
+        power_settings_new
+      </span>
 
-      <button type="button" class="btn logout-btn w-100" (click)="logout()">
-        <span class="btn-label">
+      <!-- <button type="button" class="btn logout-btn" (click)="logout()"> -->
+
+      <!-- <span class="btn-label">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="22"
@@ -58,8 +69,8 @@
             <path
               d="M3 8.812a5 5 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812"
             /></svg
-        ></span>
-      </button>
+        ></span> -->
+      <!-- </button> -->
     </div>
   </div>
 </nav>

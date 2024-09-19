@@ -1,18 +1,35 @@
 .navbar {
   /* background-color: rgb(255, 255, 255); */
-  background-color: bisque;
+  background-color: rgb(204, 9, 10);
   color: white !important;
   /* border-radius: 10px; */
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  height: 64px;
+  padding: 0px 60px;
 }
 .navbar a {
   text-decoration: none;
 }
-.navbar a span {
-  color: rgb(200, 50, 50);
+.brandName {
+  font-size: 1.1rem;
+  text-shadow: 1px 1px rgb(255, 255, 255);
   font-weight: 700;
-  font-size: 25px;
-  text-shadow: 1px 1px grey;
+  color: #cc080b;
+  letter-spacing: 3px;
+  text-shadow:
+    #ffffff 2px 0px 0px,
+    #ffffff 1.75517px 0.958851px 0px,
+    #ffffff 1.0806px 1.68294px 0px,
+    #ffffff 0.141474px 1.99499px 0px,
+    #ffffff -0.832294px 1.81859px 0px,
+    #ffffff -1.60229px 1.19694px 0px,
+    #ffffff -1.97998px 0.28224px 0px,
+    #ffffff -1.87291px -0.701566px 0px,
+    #ffffff -1.30729px -1.5136px 0px,
+    #ffffff -0.421592px -1.95506px 0px,
+    #ffffff 0.567324px -1.91785px 0px,
+    #ffffff 1.41734px -1.41108px 0px,
+    #ffffff 1.92034px -0.558831px 0px;
 }
 
 .logout-btn {
@@ -21,6 +38,7 @@
 }
 
 .cart-buttton {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,33 +47,37 @@
   width: 40px;
   fill: rgb(200, 50, 50);
   text-decoration: none !important;
-  color: rgb(200, 50, 50);
+  color: white !important;
 }
 .active {
   color: white;
   background-color: rgba(200, 50, 50, 0.8) !important;
+  color: #cc080b;
 }
 .cart-buttton:hover {
   fill: white;
-  background-color: rgb(252, 194, 194) !important;
+  background-color: rgba(200, 50, 50, 0.8) !important;
+  cursor: pointer;
 }
 
 @media (max-width: 767px) {
+  .navbar {
+    padding: 0px 10px;
+  }
   .navbar a img {
     height: 30px;
     width: 30px;
   }
-  .navbar a span {
+  /* .navbar a span {
     color: rgb(200, 50, 50);
     font-weight: 700;
     font-size: 18px;
     text-shadow: 1px 1px grey;
-  }
+  } */
   .logout-btn {
     display: block;
     visibility: visible;
-    background-color: white !important;
-    color: rgb(200, 50, 50);
+
     font-weight: 600;
     margin-left: 15px;
   }

@@ -1,22 +1,23 @@
 <div class="sidebar">
   <div class="space d-flex flex-column">
     <!-- Sidebar Header -->
+
     <div class="userinfo">
-      <div class="d-flex justify-content-center align-items-center p-3">
+      <div class="d-flex align-items-center px-3 py-2">
         <img
           src="../../../assets/images/logo.png"
           alt=""
           style="height: 50px; width: 50px"
-          class="img-fluid rounded-circle"
+          class="img-fluid rounded-circle me-3"
         />
-      </div>
 
-      <!-- User Information -->
-      <div class="text-center">
-        <p class="fw-bold">{{ currentUser?.fullName }}</p>
-        <p class="sidebar-item">{{ currentUser?.email }}</p>
+        <!-- User Information -->
+        <div style="text-align: left">
+          <p class="fw-bold mb-0 username-text">{{ currentUser?.fullName }}</p>
+          <p class="mb-0 email-text">{{ currentUser?.email }}</p>
+        </div>
       </div>
-      <hr />
+      <hr style="margin: 0px; margin-bottom: 20px" />
     </div>
     <!-- Navigation Links -->
     <div class="fixed-appbar">
@@ -164,21 +165,24 @@
     </div>
     <div class="mt-auto mb-3">
       <button type="button" class="btn logout-btn w-100" (click)="logout()">
-        <span class="btn-label"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            fill="currentColor"
-            class="bi bi-power align-self-center"
-            viewBox="0 0 16 16"
-          >
-            <path d="M7.5 1v7h1V1z" />
-            <path
-              d="M3 8.812a5 5 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812"
-            /></svg></span
-        >Logout
+        <div class="d-flex flex-row justify-content-center align-items-center">
+          <span class="material-symbols-outlined btn-label mx-1">
+            power_settings_new
+          </span>
+          <span class="mx-1 fs-5">Logout</span>
+        </div>
       </button>
+      <!-- <button type="button" class="btn logout-btn w-100" (click)="logout()">
+        <div class="justify-content-center align-items-center">
+          <span
+            class="material-symbols-outlined btn-label"
+            style="margin: auto"
+          >
+            power_settings_new </span
+          >Logout
+   
+        </div>
+      </button> -->
     </div>
   </div>
 </div>

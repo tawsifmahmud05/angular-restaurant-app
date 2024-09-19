@@ -1,11 +1,42 @@
 .sidebar {
   height: 100%;
 }
+.username-text {
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: normal;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.009375em;
+  line-height: 1.5rem;
+  text-transform: none;
+}
+
+.email-text {
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: normal;
+  word-wrap: break-word;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.009375em;
+  line-height: 1.5rem;
+  text-transform: none;
+  margin: 0px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1rem;
+}
 
 .space {
   padding: 0px 5px;
   background-color: rgb(255, 255, 255);
-
   height: 100%;
   /* border-radius: 25% 25% 25% 25% / 25% 25% 25% 25%; */
   /* background: rgba(255, 255, 255, 0.5);
@@ -19,6 +50,7 @@
   text-decoration: none;
   color: rgb(200, 50, 50);
   font-weight: 700;
+  width: 100%;
 }
 .list-unstyled {
   width: 100%;
@@ -26,7 +58,7 @@
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  background-color: bisque;
+  background-color: rgb(249, 224, 225);
   width: 100%;
   color: rgb(200, 50, 50);
 }
@@ -37,25 +69,28 @@
   text-align: start;
 }
 
-.btn-label {
-  position: relative;
-  left: -6px;
-  display: inline-block;
-  /* padding: 6px 12px; */
-  padding: 5px 0px;
-  border-radius: 3px 0 0 3px;
-}
-
 .btn {
   margin-bottom: 10px;
 }
 .logout-btn {
-  padding-top: 0;
-  padding-bottom: 0;
-  background-color: rgb(200, 50, 50);
+  background-color: rgb(204, 9, 10);
   color: white;
-  margin-top: auto;
   height: 40px;
+  padding: 0px;
+}
+.logout-btn:hover {
+  background-color: white;
+  border: 2px solid rgb(204, 9, 10);
+  color: rgb(204, 9, 10);
+  height: 40px;
+}
+
+.sidebar-item {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1rem;
+  margin: 0px 10px;
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
@@ -100,6 +135,9 @@
     flex-direction: row;
     margin: 0px;
   }
+  /* .fixed-appbar .nav {
+    padding: 0px;
+  } */
 
   .fixed-appbar .nav-item {
     text-align: center;
@@ -109,6 +147,7 @@
     text-decoration: none;
     color: rgb(200, 50, 50);
     font-weight: 700;
+    padding: 10px 0px;
   }
 
   .fixed-appbar .nav-link.active {
