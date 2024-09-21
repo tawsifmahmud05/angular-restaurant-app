@@ -22,6 +22,8 @@ interface RequestEmployeeTable {
 
 export class AssignModalComponent implements OnInit {
 
+
+
   constructor(private dialogRef: MatDialogRef<AssignModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dataStorageService: DataStorageService) { }
@@ -29,6 +31,7 @@ export class AssignModalComponent implements OnInit {
   ngOnInit(): void {
     this.loadNonAssignedEmployees(this.data.id);
   }
+
 
 
   assignedEmployees = new FormControl('');

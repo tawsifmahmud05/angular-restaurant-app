@@ -32,6 +32,7 @@
   font-weight: 500;
   letter-spacing: normal;
   line-height: 1rem;
+  opacity: 0.6;
 }
 
 .space {
@@ -77,6 +78,7 @@
   color: white;
   height: 40px;
   padding: 0px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .logout-btn:hover {
   background-color: white;

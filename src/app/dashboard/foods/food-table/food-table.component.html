@@ -33,23 +33,22 @@
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Name </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Name:</span>
-        {{ element.name }}
+        <div class="isMobileName">{{ element.name }}</div>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="price">
       <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Price:</span>
-        {{ element.price }}
+        <span class="mobile-label">Price:&nbsp;&nbsp;</span>
+        {{ element.price }}৳
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="discountType">
       <mat-header-cell *matHeaderCellDef> Discount Type </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Discount Type:</span>
+        <span class="mobile-label">Discount Type:&nbsp;&nbsp;</span>
         {{ element.discountType }}
       </mat-cell>
     </ng-container>
@@ -57,22 +56,46 @@
     <ng-container matColumnDef="discount">
       <mat-header-cell *matHeaderCellDef> Discount </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Discount:</span>
+        <span class="mobile-label">Discount:&nbsp;&nbsp;</span>
         {{ element.discount }}
+        <span *ngIf="element.discountType == 'Percentage'">%</span>
+        <span *ngIf="element.discountType != 'Percentage'">৳</span>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="discountPrice">
-      <mat-header-cell *matHeaderCellDef> Discount Price </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Discounted Price </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Discount Price:</span>
-        {{ element.discountPrice }}
+        <span class="mobile-label">Discounted Price:&nbsp;&nbsp;</span>
+        {{ element.discountPrice }}৳
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
       <mat-cell *matCellDef="let element" class="action-icon">
+        <div class="mx-1">
+          <a>
+            <span
+              class="material-symbols-outlined"
+              style="color: green; font-size: 30px"
+            >
+              edit
+            </span>
+          </a>
+        </div>
+        <div class="mx-1">
+          <a (click)="onDeleteFood(element.id)" class="delete-btn">
+            <span
+              class="material-symbols-outlined"
+              style="color: red; font-size: 30px"
+            >
+              delete
+            </span>
+          </a>
+        </div>
+      </mat-cell>
+      <!-- <mat-cell *matCellDef="let element" class="action-icon">
         <div class="row d-flex">
           <div class="col">
             <span
@@ -93,7 +116,7 @@
             </a>
           </div>
         </div>
-      </mat-cell>
+      </mat-cell> -->
     </ng-container>
 
     <mat-header-row

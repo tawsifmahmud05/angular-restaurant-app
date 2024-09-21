@@ -1,4 +1,36 @@
-/* .order-list-container {
-  overflow-y: auto;
-  height: 900px;
-} */
+/* Ensure container uses flexbox */
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of cards if the space is limited */
+  gap: 16px; /* Add spacing between cards */
+}
+
+/* Wrapper to control individual card sizing */
+.card-wrapper {
+  flex: 1 1 calc(25% - 16px); /* Take up 25% width, minus the gap */
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+  margin-bottom: 16px; /* Add bottom margin to create space between rows */
+}
+
+@media (max-width: 1024px) {
+  .card-wrapper {
+    flex: 1 1 calc(33.33% - 16px); /* Take up 33% width on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .card-wrapper {
+    flex: 1 1 calc(50% - 16px); /* Take up 50% width on tablet-sized screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card-wrapper {
+    flex: 1 1 100%; /* Full width for mobile screens */
+  }
+}
+
+/* General card styles */
+.example-card {
+  width: 100%; /* Ensure cards take full width of their container */
+}

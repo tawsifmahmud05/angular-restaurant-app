@@ -32,40 +32,50 @@
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Name </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Name:</span>
-        {{ element.user.fullName }}
+        <!-- <span class="mobile-label">Name:</span> -->
+        <div class="isMobileName">
+          {{ element.user.fullName }}
+        </div>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Email:</span>
-        {{ element.user.email }}
+        <div class="isMobileEmail">
+          {{ element.user.email }}
+        </div>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="designation">
       <mat-header-cell *matHeaderCellDef> Designation </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Designation:</span>
-        {{ element.designation }}
+        <div class="isMobileEmail">
+          <span class="isMobileShow">Designation:&nbsp;</span>
+          {{ element.designation }}
+        </div>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="joinDate">
-      <mat-header-cell *matHeaderCellDef> Join Date </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Join Date:</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Join Date:</span>
-        {{ element.joinDate }}
+        <div class="isMobileEmail">
+          <span class="isMobileShow">Joined on&nbsp; </span>
+
+          {{ element.joinDate }}
+        </div>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="phone">
       <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Phone:</span>
-        {{ element.user.phoneNumber }}
+        <div class="isMobileEmail">
+          <span class="isMobileShow">Phone:&nbsp; </span>
+          {{ element.user.phoneNumber }}
+        </div>
       </mat-cell>
     </ng-container>
 
@@ -74,27 +84,25 @@
         Action
       </mat-header-cell>
       <mat-cell *matCellDef="let element" class="action-icon">
-        <div class="row d-flex">
-          <div class="col">
-            <a>
-              <span
-                class="material-symbols-outlined"
-                style="color: green; font-size: 30px"
-              >
-                edit
-              </span>
-            </a>
-          </div>
-          <div class="col">
-            <a (click)="onDelete(element.id)" class="delete-btn">
-              <span
-                class="material-symbols-outlined"
-                style="color: red; font-size: 30px"
-              >
-                delete
-              </span>
-            </a>
-          </div>
+        <div class="mx-1">
+          <a>
+            <span
+              class="material-symbols-outlined"
+              style="color: green; font-size: 30px"
+            >
+              edit
+            </span>
+          </a>
+        </div>
+        <div class="mx-1">
+          <a (click)="onDelete(element.id)" class="delete-btn">
+            <span
+              class="material-symbols-outlined"
+              style="color: red; font-size: 30px"
+            >
+              delete
+            </span>
+          </a>
         </div>
       </mat-cell>
     </ng-container>

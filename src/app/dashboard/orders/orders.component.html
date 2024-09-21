@@ -1,19 +1,4 @@
-<div class="container-fluid">
-  <!-- <div class="row mb-3">
-    <div class="col-md-6 d-flex">
-      <h2 class="font-heading">Orders</h2>
-    </div>
-    <div class="col-md-6 d-flex">
-      <button
-        class="btn add-btn"
-        type="button"
-        routerLink="/dashboard/orders/new-order"
-        routerLinkActive="active"
-      >
-        New Order
-      </button>
-    </div>
-  </div> -->
+<!-- <div class="container-fluid">
   <div class="row align-items-center mb-3">
     <div class="col d-flex align-items-center">
       <h2 class="font-heading mb-0">Orders</h2>
@@ -41,10 +26,58 @@
   >
     <h1>No Data Found</h1>
   </div>
-  <div *ngIf="isFoundData" class="order-list-container mobile-margin-bottom">
+  <div
+    *ngIf="isFoundData"
+    class="order-list-container mobile-margin-bottom"
+    style="overflow-y: auto"
+  >
+    <div class="card-container">
+      <div *ngFor="let order of orders">
+        <div class="m-1">
+          <app-card
+            [order]="order"
+            (ondeleteOrder)="onDeleteReload($event)"
+          ></app-card>
+        </div>
+      </div>
+    </div>
     <div class="row" *ngFor="let orderChunk of chunkedOrders">
-      <!-- <app-card *ngFor="let order of orderChunk" [order]="order"></app-card> -->
       <div class="col-md-4" *ngFor="let order of orderChunk">
+        <app-card
+          [order]="order"
+          (ondeleteOrder)="onDeleteReload($event)"
+        ></app-card>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="container-fluid">
+  <div class="row align-items-center mb-3">
+    <div class="col d-flex align-items-center">
+      <h2 class="font-heading mb-0">Orders</h2>
+    </div>
+    <div class="col-auto">
+      <button
+        class="btn add-btn"
+        routerLink="/dashboard/orders/new-order"
+        routerLinkActive="active"
+      >
+        Add Order
+      </button>
+    </div>
+  </div>
+
+  <div
+    *ngIf="!isFoundData"
+    class="d-flex justify-content-center align-items-center"
+    style="min-height: 500px"
+  >
+    <h1>No Data Found</h1>
+  </div>
+
+  <div *ngIf="isFoundData" class="order-list-container mobile-margin-bottom">
+    <div class="row">
+      <div *ngFor="let order of orders" class="col-md-6 col-lg-4 col-12 p-2">
         <app-card
           [order]="order"
           (ondeleteOrder)="onDeleteReload($event)"

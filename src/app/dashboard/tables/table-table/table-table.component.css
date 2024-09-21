@@ -27,6 +27,8 @@ th {
   background-color: rgba(175, 175, 175, 0.3);
   border-radius: 50px;
   min-width: 100px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .employee-btn:hover {
   background-color: rgba(200, 50, 50, 0.2);
@@ -78,10 +80,29 @@ th {
     margin-bottom: 10px;
     border-radius: 20px;
     background-color: white;
+    box-shadow:
+      rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   }
   .mat-mdc-cell {
     border: 0px solid white;
     padding: 0px;
     font-size: large;
+  }
+  .mat-row {
+    min-height: 50px !important;
+  }
+  .employee-buttons {
+    display: flex;
+  }
+  .isEmployeeMobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .isTableDeleteMobile {
+    width: 100%;
+    text-align: end !important;
   }
 }

@@ -50,6 +50,7 @@ export class AddFoodComponent {
     } else if (this.food.discountType == 2) {
       this.food.discountPrice = this.food.price - (this.food.price * this.food.discount / 100);
     } else {
+      this.food.discount = 0;
       this.food.discountPrice = this.food.price;
     }
 

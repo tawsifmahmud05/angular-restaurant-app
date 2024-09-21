@@ -124,59 +124,74 @@
     <ng-container matColumnDef="tableNumber">
       <mat-header-cell *matHeaderCellDef>Table Number </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Table Number:</span>
-        {{ element.tableNumber }}
+        <div class="isMobileName">
+          {{ element.tableNumber }}
+        </div>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="numberOfSeats">
       <mat-header-cell *matHeaderCellDef>Total Seat </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Total Seat:</span>
-        {{ element.numberOfSeats }}</mat-cell
-      >
+        <div class="isMobileEmail">
+          {{ element.numberOfSeats }}
+          <span class="isMobileShow">&nbsp;Seated </span>
+        </div>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="isOccupied">
       <mat-header-cell *matHeaderCellDef>Booking Status</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="mobile-label">Booking Status:</span>
-
-        {{ element.isOccupied ? "Booked" : "Available" }}
+        <div class="isMobileEmail">
+          <span class="isMobileShow">Status:&nbsp; </span>
+          {{ element.isOccupied ? "Booked" : "Available" }}
+        </div>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="employees">
       <mat-header-cell *matHeaderCellDef>Employees</mat-header-cell>
       <mat-cell *matCellDef="let element" class="align-label">
-        <span class="mobile-label">Employees:</span>
-        <div class="employee-buttons">
-          <div *ngFor="let employee of element.employees">
-            <button
-              type="button"
-              class="btn employee-btn my-1 w-100 d-flex align-items-center justify-content-between"
-              (click)="openConfirmationDialog(employee.employeeTableId)"
-            >
-              <span>{{ employee.name.split(" ")[0] }}</span>
-              <span class="material-symbols-outlined text-danger">
-                do_not_disturb_on
-              </span>
-            </button>
+        <!-- <span class="mobile-label">Employees:</span> -->
+        <div
+          class="isEmployeeMobile"
+          style="display: flex; flex-direction: column; align-items: center"
+        >
+          <div class="employee-buttons">
+            <div *ngFor="let employee of element.employees" class="d-flex">
+              <button
+                type="button"
+                class="btn employee-btn my-1 w-100 d-flex align-items-center justify-content-between"
+                (click)="openConfirmationDialog(employee.employeeTableId)"
+              >
+                <span>{{ employee.name.split(" ")[0] }}</span>
+                <span class="material-symbols-outlined text-danger">
+                  do_not_disturb_on
+                </span>
+              </button>
+            </div>
           </div>
-
-          <a
-            style="cursor: pointer"
-            (click)="
-              openAssignDialog(element.id, element.numberOfSeats, element.image)
-            "
-          >
-            <span
-              class="material-symbols-outlined"
-              style="color: green; font-size: 30px"
+          <div class="isEmployeeMobile">
+            <a
+              class="add-employee-button"
+              style="cursor: pointer"
+              (click)="
+                openAssignDialog(
+                  element.id,
+                  element.numberOfSeats,
+                  element.image
+                )
+              "
             >
-              add_circle
-            </span>
-          </a>
+              <span
+                class="material-symbols-outlined"
+                style="color: green; font-size: 30px"
+              >
+                add_circle
+              </span>
+            </a>
+          </div>
         </div>
       </mat-cell>
     </ng-container>
@@ -184,7 +199,7 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
       <mat-cell *matCellDef="let element" class="align-bin action-icon">
-        <div>
+        <div class="isTableDeleteMobile">
           <a (click)="onDeleteTable(element.id)" class="delete-btn">
             <span
               class="material-symbols-outlined"

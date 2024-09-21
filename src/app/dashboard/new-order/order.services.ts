@@ -132,6 +132,8 @@ export class OrderService {
 
                 this.orderSubject.next(currentOrder);
                 this.calculateTotalAmount(currentOrder.items);
+            } else {
+                this.removeItemFromOrder(foodId)
             }
 
         }

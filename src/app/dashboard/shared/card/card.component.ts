@@ -57,7 +57,7 @@ export class CardComponent implements OnInit {
 
   deleteOrder(orderId: string) {
     this.dataStorageService.deleteOrder(orderId).subscribe(response => {
-      this.notificationService.showSuccess("Order deleted successfully")
+      this.notificationService.showError("Order deleted successfully")
       this.ondeleteOrder.emit(true)
     },
       error => {

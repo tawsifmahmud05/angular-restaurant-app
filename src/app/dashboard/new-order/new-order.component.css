@@ -67,7 +67,6 @@
 .food-card {
   background-color: #fff;
   padding: 20px;
-  display: flex;
   flex-direction: row;
   text-align: start;
   align-items: center;
@@ -113,6 +112,7 @@
   color: #fff;
   background-color: rgb(200, 50, 50);
   padding: 10px 40px;
+  margin-left: auto;
 }
 
 @media (max-width: 767px) {
@@ -124,5 +124,8 @@
   }
   .food-container {
     margin-bottom: 100px;
+  }
+  .add-to-cart-btn {
+    margin: auto;
   }
 }

@@ -1,4 +1,4 @@
-.notification-container {
+/* .notification-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -48,4 +48,31 @@
     opacity: 0;
     transform: translateX(100%);
   }
+} */
+.notification-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.notification {
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  /* Removed the conflicting CSS animations */
+}
+
+.notification.success {
+  background-color: #28a745;
+}
+
+.notification.error {
+  background-color: #cc090a;
+}
+
+.notification.info {
+  background-color: #17a2b8;
 }
