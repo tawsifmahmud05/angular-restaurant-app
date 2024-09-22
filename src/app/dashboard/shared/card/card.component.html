@@ -24,7 +24,7 @@
               'https://restaurantapi.bssoln.com/images/food/' + item.food.image
             "
             alt="{{ item.food.name }}"
-            width="80"
+            width="70"
             class="rounded-circle"
           />
         </div>
@@ -50,8 +50,8 @@
         Total Item:
         <span class="font-weight-bold">{{ order.orderItems.length }}</span>
       </p>
-      <p class="text-h6">
-        Total: <strong class="text-green"> {{ order.amount }}৳</strong>
+      <p class="fs-5 fw-bold">
+        Total: <span class="text-green"> {{ order.amount }}৳</span>
       </p>
     </div>
     <div class="order-edit-col">

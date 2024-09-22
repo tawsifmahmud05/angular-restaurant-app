@@ -66,6 +66,10 @@ body {
   visibility: hidden;
   display: none;
 }
+
+.mat-mdc-cell {
+  font-size: 16px;
+}
 @media (max-width: 767px) {
   .add-btn {
     margin-left: 0;

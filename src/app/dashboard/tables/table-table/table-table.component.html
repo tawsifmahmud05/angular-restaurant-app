@@ -162,10 +162,12 @@
             <div *ngFor="let employee of element.employees" class="d-flex">
               <button
                 type="button"
-                class="btn employee-btn my-1 w-100 d-flex align-items-center justify-content-between"
+                class="btn employee-btn my-1 d-flex align-items-center"
                 (click)="openConfirmationDialog(employee.employeeTableId)"
               >
-                <span>{{ employee.name.split(" ")[0] }}</span>
+                <!-- <span>{{ employee.name.split(" ")[0] }}</span> -->
+                <span class="mx-1">{{ employee.name }}</span>
+
                 <span class="material-symbols-outlined text-danger">
                   do_not_disturb_on
                 </span>
