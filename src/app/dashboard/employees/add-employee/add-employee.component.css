@@ -3,7 +3,7 @@
   font-weight: 700;
   color: primary;
   padding-bottom: 5px;
-  border-bottom: 3px solid #cc080b;
+  border-bottom: 3px solid rgb(204, 9, 10);
 }
 
 .form {
@@ -35,18 +35,19 @@
 }
 
 .btn {
-  background-color: rgb(200, 50, 50) !important;
+  background-color: rgb(204, 9, 10) !important;
   color: white !important;
 }
 
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
-  border: 1px solid red;
+  border: 1px solid rgb(204, 9, 10);
 }
 
 .cross-button {
   position: absolute;
   z-index: 1;
+  background-color: rgb(204, 9, 10);
 }
 .food-image {
   position: relative;

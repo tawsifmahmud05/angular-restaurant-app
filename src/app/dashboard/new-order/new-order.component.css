@@ -41,9 +41,9 @@
 }
 
 .card.selected {
-  border: 2px solid rgb(200, 50, 50);
+  border: 2px solid rgb(204, 9, 10);
   /* border-color:  */
-  box-shadow: 0 0 10px rgba(200, 50, 50, 0.5);
+  box-shadow: 0 0 10px rgba(204, 9, 10, 0.5);
 }
 .card img {
   width: 100px; /* Adjust as needed */
@@ -63,7 +63,6 @@
 .details p {
   margin: 5px 0;
 }
-
 .food-card {
   background-color: #fff;
   padding: 20px;
@@ -75,11 +74,41 @@
 }
 
 .food-card:hover {
-  border: 1px solid red;
+  border: 2px solid rgb(204, 9, 10);
+}
+
+.food-img-container img {
+  transition: transform 0.5s ease;
+}
+
+.food-card:hover .food-img-container img {
+  animation: spin 5s linear infinite; /* Adjusted the duration for more visible animation */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* .food-card {
+  background-color: #fff;
+  padding: 20px;
+  flex-direction: row;
+  text-align: start;
+  align-items: center;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+}
+
+.food-card:hover {
+  border: 2px solid rgb(204, 9, 10);
 }
 .food-card:hover > .food-img-container {
   animation: spin 20s linear infinite;
-}
+} */
 
 /* .food-img-container {
   margin: 16px !important;
@@ -99,18 +128,18 @@
   transform: rotate(0);
 }
 
-@keyframes spin {
+/* @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 .add-to-cart-btn {
   display: inline-block;
   color: #fff;
-  background-color: rgb(200, 50, 50);
+  background-color: rgb(204, 9, 10);
   padding: 10px 40px;
   margin-left: auto;
 }
