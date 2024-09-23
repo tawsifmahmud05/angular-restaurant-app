@@ -166,7 +166,11 @@
                 (click)="openConfirmationDialog(employee.employeeTableId)"
               >
                 <!-- <span>{{ employee.name.split(" ")[0] }}</span> -->
-                <span class="mx-1">{{ employee.name }}</span>
+                <span class="mx-1">{{
+                  employee.name.split(" ").slice(0, 2).join(" ")
+                }}</span>
+
+                <!-- <span >{{ employee.name }}</span> -->
 
                 <span class="material-symbols-outlined text-danger">
                   do_not_disturb_on
