@@ -1,8 +1,22 @@
 <div class="sidebar" [ngClass]="{ isHidden: hideCart }">
   <!-- <div class="sidebar"> -->
   <div class="row m-3">
-    <div class="col">
-      <h2 class="font-heading">Cart</h2>
+    <div
+      class="col d-flex"
+      style="
+        border-bottom: 3px solid #cc080b;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <h2 class="font-heading-cart">Cart</h2>
+      <span
+        class="material-symbols-outlined"
+        style="color: rgb(204, 9, 10)"
+        (click)="onCloseCart()"
+      >
+        cancel
+      </span>
     </div>
     <div class="scrollable-container">
       <div

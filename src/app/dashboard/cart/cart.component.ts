@@ -87,6 +87,10 @@ export class CartComponent implements OnInit {
 
   }
 
+  onCloseCart() {
+    this.hideCart = true;
+  }
+
 
 
 
