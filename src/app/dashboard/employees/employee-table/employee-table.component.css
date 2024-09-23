@@ -96,6 +96,6 @@ mat-column-action {
     font-size: large;
   }
   .mat-row {
-    min-height: 50px !important;
+    min-height: 35px !important;
   }
 }
