@@ -11,7 +11,7 @@
   text-decoration: none;
 }
 .brandName {
-  font-size: 1.1rem;
+  font-size: 20px;
   text-shadow: 1px 1px rgb(255, 255, 255);
   font-weight: 700;
   color: #cc080b;
@@ -54,6 +54,10 @@
   background-color: rgba(200, 50, 50, 0.8) !important;
   color: #cc080b;
 }
+.brandImg {
+  height: 50px;
+  width: 50px;
+}
 
 @media (max-width: 767px) {
   .navbar {
@@ -72,10 +76,17 @@
   .logout-btn {
     display: block;
     visibility: visible;
-    height: 22px;
-    width: 22px;
 
     font-weight: 600;
     margin-left: 15px;
+  }
+
+  img {
+    height: 45px;
+    width: 45px;
+    display: none;
+  }
+  .brandName {
+    font-size: 16px;
   }
 }
