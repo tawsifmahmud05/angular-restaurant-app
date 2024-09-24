@@ -11,16 +11,17 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(200, 50, 50, 0.7);
+  border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: white;
+  background: rgb(204, 9, 10);
 }
 
 * {
   /* font-family: "Poppins", sans-serif; */
-  font-family: "Inter", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 html,
 body {
@@ -46,7 +47,7 @@ body {
   font-size: 30px;
   font-weight: 700;
   color: primary;
-  margin-bottom: 0px;
+  padding-bottom: 10px;
   border-bottom: 3px solid #cc080b;
 }
 
@@ -87,14 +88,14 @@ body {
     justify-content: center;
   }
   .isMobileName {
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 800;
     display: flex;
     width: 100%;
     justify-content: center;
   }
   .isMobileEmail {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: black;
     display: flex;

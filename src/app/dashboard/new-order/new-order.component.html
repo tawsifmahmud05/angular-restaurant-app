@@ -107,7 +107,7 @@
                 </button>
               </div>
               <div class="scrollable-container">
-                <div class="food-card mb-3" *ngFor="let food of foodData">
+                <div class="food-card mb-3 mx-2" *ngFor="let food of foodData">
                   <div class="row">
                     <div class="col-md-3">
                       <div
@@ -142,7 +142,7 @@
                             </div>
                             <div *ngIf="food.discountType != 'None'">
                               <p
-                                class="me-4 text-h6"
+                                class="me-4 fs-6"
                                 style="
                                   text-decoration: line-through;
                                   color: rgb(204, 9, 10);
@@ -155,7 +155,7 @@
                                 </span>
                               </p>
                               <p
-                                class="me-4 text-h6"
+                                class="me-4 fs-5"
                                 style="color: green; font-weight: 700"
                               >
                                 Discounted Price:

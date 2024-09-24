@@ -22,6 +22,9 @@
   .card-wrapper {
     flex: 1 1 calc(50% - 16px); /* Take up 50% width on tablet-sized screens */
   }
+  .card-col {
+    padding: 10px 00px !important;
+  }
 }
 
 @media (max-width: 480px) {

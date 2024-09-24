@@ -43,8 +43,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  height: 40px;
-  width: 40px;
+  /* height: 40px;
+  width: 40px; */
   fill: rgb(200, 50, 50);
   text-decoration: none !important;
   color: white !important;
@@ -53,11 +53,6 @@
   color: white;
   background-color: rgba(200, 50, 50, 0.8) !important;
   color: #cc080b;
-}
-.cart-buttton:hover {
-  fill: white;
-  background-color: rgba(200, 50, 50, 0.8) !important;
-  cursor: pointer;
 }
 
 @media (max-width: 767px) {
@@ -77,6 +72,8 @@
   .logout-btn {
     display: block;
     visibility: visible;
+    height: 22px;
+    width: 22px;
 
     font-weight: 600;
     margin-left: 15px;
