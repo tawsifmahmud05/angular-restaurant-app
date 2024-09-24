@@ -39,7 +39,7 @@
 
     <ng-container matColumnDef="price">
       <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell *matCellDef="let element" class="info-text">
         <span class="mobile-label">Price:&nbsp;&nbsp;</span>
         {{ element.price }}৳
       </mat-cell>
@@ -47,7 +47,7 @@
 
     <ng-container matColumnDef="discountType">
       <mat-header-cell *matHeaderCellDef> Discount Type </mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell *matCellDef="let element" class="info-text">
         <span class="mobile-label">Discount Type:&nbsp;&nbsp;</span>
         {{ element.discountType }}
       </mat-cell>
@@ -55,7 +55,7 @@
 
     <ng-container matColumnDef="discount">
       <mat-header-cell *matHeaderCellDef> Discount </mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell *matCellDef="let element" class="info-text">
         <span class="mobile-label">Discount:&nbsp;&nbsp;</span>
         {{ element.discount }}
         <span *ngIf="element.discountType == 'Percentage'">%</span>
@@ -65,7 +65,7 @@
 
     <ng-container matColumnDef="discountPrice">
       <mat-header-cell *matHeaderCellDef> Discounted Price </mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell *matCellDef="let element" class="info-text">
         <span class="mobile-label">Discounted Price:&nbsp;&nbsp;</span>
         {{ element.discountPrice }}৳
       </mat-cell>

@@ -46,7 +46,7 @@
     style="padding: 10px 16px"
   >
     <div style="text-align: left">
-      <p>
+      <p class="my-1">
         Total Item:
         <span class="font-weight-bold">{{ order.orderItems.length }}</span>
       </p>
@@ -55,22 +55,11 @@
       </p>
     </div>
     <div class="order-edit-col">
-      <p class="text-end">
+      <p class="text-end my-1">
         Table:
         <span class="font-weight-bold"> {{ order.table.tableNumber }}</span>
       </p>
       <div class="d-flex align-items-center justify-content-between">
-        <!-- <mat-form-field appearance="outline" class="custom-width">
-          <mat-select
-            [(value)]="selectedStatusValue"
-            (selectionChange)="onStatusChange($event.value)"
-            panelClass="custom-select-panel"
-          >
-            <mat-option *ngFor="let status of statuses" [value]="status.value">
-              {{ status.label }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field> -->
         <div class="form-group custom-width">
           <select
             class="form-select"

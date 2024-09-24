@@ -106,4 +106,12 @@ body {
     visibility: visible;
     display: block;
   }
+  .font-heading {
+    text-align: justify;
+    font-size: 20px;
+    font-weight: 700;
+    color: primary;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #cc080b;
+  }
 }
