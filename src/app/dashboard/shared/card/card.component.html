@@ -1,5 +1,5 @@
 <!-- card.component.html -->
-<mat-card class="example-card">
+<mat-card class="example-card" *ngIf="showCard" @fadeInOut @scaleUp>
   <mat-card-header>
     <div class="me-auto">
       <p style="font-weight: 600">Order ID: {{ order.orderNumber }}</p>

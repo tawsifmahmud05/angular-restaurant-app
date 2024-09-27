@@ -1,11 +1,16 @@
 <div class="info-content">
-  <div class="card custom-card shadow">
+  <div class="card custom-card shadow" *ngIf="showCard" @fadeInOut @scaleUp>
     <div class="card-body custom-card-body">
       <div class="custom-card-title">
         {{ countType }}
       </div>
       <div class="row">
-        <div class="col-sm-6 col-xs-6 col-6">
+        <div
+          class="col-sm-6 col-xs-6 col-6"
+          *ngIf="showCard"
+          @fadeInOut
+          @scaleUp
+        >
           <div class="custom-card-icon" *ngIf="countType == 'Employees'">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -82,11 +82,11 @@
   }
 
   img {
-    height: 45px;
-    width: 45px;
-    display: none;
+    height: 40px !important;
+    width: 40px !important;
   }
   .brandName {
     font-size: 16px;
+    /* display: none; */
   }
 }

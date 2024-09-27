@@ -4,13 +4,35 @@ import { DataStorageService } from '../data-storage.service';
 import { Router } from '@angular/router';
 import { LoaderService } from '../loader.service';
 import { NotificationService } from '../notification/notification.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrl: './card.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [   // :enter is alias for 'void => *' (when the element is added)
+        style({ opacity: 0 }),
+        animate(300, style({ opacity: 1 }))
+      ]),
+      transition(':leave', [   // :leave is alias for '* => void' (when the element is removed)
+        animate(300, style({ opacity: 0 }))
+      ])
+    ]),
+    trigger('scaleUp', [
+      transition(':enter', [
+        style({ transform: 'scale(0.8)' }),
+        animate(300, style({ transform: 'scale(1)' }))
+      ]),
+      transition(':leave', [
+        animate(300, style({ transform: 'scale(0.8)' }))
+      ])
+    ])
+  ]
 })
 export class CardComponent implements OnInit {
+  showCard = true;
   @Input()
   order!: Order;
   @Output() ondeleteOrder = new EventEmitter<boolean>();

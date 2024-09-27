@@ -5,6 +5,7 @@
 .custom-card {
   border-top: 5px solid rgb(204, 9, 10);
   border-radius: 0.25rem;
+  transition: transform 0.3s ease-in-out;
 }
 .custom-card-body {
   display: flex;
