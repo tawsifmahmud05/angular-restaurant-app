@@ -34,7 +34,7 @@
   background-color: white;
   margin-bottom: 10px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   width: 100%;
@@ -43,7 +43,8 @@
 .card.selected {
   border: 2px solid rgb(204, 9, 10);
   /* border-color:  */
-  box-shadow: 0 0 10px rgba(204, 9, 10, 0.5);
+  /* filter: drop-shadow(0 0 10px rgba(204, 9, 10, 0.5)); */
+  /* box-shadow: 0 4px 10px rgba(204, 9, 10, 0.5); */
 }
 .card img {
   width: 100px; /* Adjust as needed */
